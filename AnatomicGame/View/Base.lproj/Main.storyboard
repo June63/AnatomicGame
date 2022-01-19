@@ -8,20 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Create View Controller-->
         <scene sceneID="tgy-vN-Ydm">
             <objects>
-                <viewController id="0AK-au-Tin" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naK-E4-x6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="0AK-au-Tin" userLabel="Create View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B6I-j5-RSe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHt-bc-rEj">
-                                <rect key="frame" x="46" y="308" width="113" height="143"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="True/False"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Créer vos questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnH-FK-5K0">
                                 <rect key="frame" x="127" y="142" width="161" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -29,11 +24,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDV-Ul-uUh">
-                                <rect key="frame" x="46" y="539" width="113" height="143"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHt-bc-rEj">
+                                <rect key="frame" x="46" y="308" width="113" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Question / Response"/>
+                                <buttonConfiguration key="configuration" style="plain" title="True/False"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZe-wC-cIL">
                                 <rect key="frame" x="240" y="308" width="113" height="143"/>
@@ -41,20 +36,25 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="QCM"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDV-Ul-uUh">
+                                <rect key="frame" x="46" y="539" width="113" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Question / Response"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hSF-8G-36z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" image="questionmark.square.fill" catalog="system" id="JdV-xs-yoN"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naK-E4-x6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="1034.5982142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--QCM View Controller-->
         <scene sceneID="4tR-ri-mvd">
             <objects>
-                <viewController id="nE3-Qk-nzj" sceneMemberID="viewController">
+                <viewController id="nE3-Qk-nzj" userLabel="QCM View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xi4-3R-RrB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,18 +77,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Reponse D" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ilz-Wk-H5W">
-                                <rect key="frame" x="256" y="509" width="99" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Reponse C" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVo-jg-tPd">
                                 <rect key="frame" x="40" y="509" width="98" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Reponse D" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ilz-Wk-H5W">
+                                <rect key="frame" x="256" y="509" width="99" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJD-ht-kWc">
+                                <rect key="frame" x="164" y="753" width="76" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Envoyer"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RbL-2H-GFc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -98,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="2147.826086956522" y="797.54464285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Question Reponse View Controller-->
         <scene sceneID="E5H-zP-bfO">
             <objects>
-                <viewController id="Jzf-e2-iph" sceneMemberID="viewController">
+                <viewController id="Jzf-e2-iph" userLabel="Question Reponse View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fVy-cA-SDV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +126,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgc-Sf-hVt">
+                                <rect key="frame" x="169" y="744" width="76" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Envoyer"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dgR-26-nB7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -127,16 +139,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQd-ee-Vrf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="1254"/>
+            <point key="canvasLocation" x="2910.144927536232" y="1253.5714285714284"/>
         </scene>
-        <!--Play-->
+        <!--Play View Controller-->
         <scene sceneID="h4N-um-tPi">
             <objects>
-                <viewController id="PMR-hH-Ibs" sceneMemberID="viewController">
+                <viewController id="PMR-hH-Ibs" userLabel="Play View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OUc-m5-4BS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choississer votre jeu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-AR-63d">
+                                <rect key="frame" x="134" y="152" width="158" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kr5-ck-XXC">
                                 <rect key="frame" x="59" y="274" width="113" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -149,13 +168,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="QCM"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choississer votre jeu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-AR-63d">
-                                <rect key="frame" x="134" y="152" width="158" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCa-xB-T84">
                                 <rect key="frame" x="59" y="522" width="113" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -172,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="427.90178571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--True False View Controller-->
         <scene sceneID="Pbq-7h-sTC">
             <objects>
-                <viewController id="F4s-A9-8au" sceneMemberID="viewController">
+                <viewController id="F4s-A9-8au" userLabel="True False View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vDB-SY-s1z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,6 +213,12 @@
                                 <buttonConfiguration key="configuration" style="filled" title="False">
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-aX-Imf">
+                                <rect key="frame" x="162" y="642" width="76" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Envoyer"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q57-na-NwW"/>
