@@ -1,13 +1,13 @@
 //
-//  True_False_ViewController.swift
+//  TabBarViewController.swift
 //  AnatomicGame
 //
-//  Created by Léa Kieffer on 17/01/2022.
+//  Created by Léa Kieffer on 19/01/2022.
 //
 
 import UIKit
 
-class TrueFalse : UIViewController {
+class TabBar : UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

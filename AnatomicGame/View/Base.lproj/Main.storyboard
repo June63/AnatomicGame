@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ha0-KQ-NE1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0AK-au-Tin">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -11,7 +11,6 @@
         <!--Create View Controller-->
         <scene sceneID="tgy-vN-Ydm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naK-E4-x6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="0AK-au-Tin" userLabel="Create View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B6I-j5-RSe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -46,8 +45,9 @@
                         <viewLayoutGuide key="safeArea" id="hSF-8G-36z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="questionmark.square.fill" catalog="system" id="JdV-xs-yoN"/>
+                    <tabBarItem key="tabBarItem" title="Create" image="questionmark.diamond.fill" catalog="system" id="JdV-xs-yoN"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naK-E4-x6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="1034.5982142857142"/>
         </scene>
@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="2147.826086956522" y="797.54464285714278"/>
         </scene>
-        <!--Question Reponse View Controller-->
+        <!--Question Response View Controller-->
         <scene sceneID="E5H-zP-bfO">
             <objects>
-                <viewController id="Jzf-e2-iph" userLabel="Question Reponse View Controller" sceneMemberID="viewController">
+                <viewController id="Jzf-e2-iph" userLabel="Question Response View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fVy-cA-SDV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +250,7 @@
     </scenes>
     <resources>
         <image name="logo.playstation" catalog="system" width="128" height="92"/>
-        <image name="questionmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="questionmark.diamond.fill" catalog="system" width="128" height="122"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

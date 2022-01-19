@@ -13,6 +13,15 @@
 		4962F8A127886A140061C456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4962F89F27886A140061C456 /* Main.storyboard */; };
 		4962F8A327886A150061C456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4962F8A227886A150061C456 /* Assets.xcassets */; };
 		4962F8A627886A150061C456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4962F8A427886A150061C456 /* LaunchScreen.storyboard */; };
+		496A14F12798127600207EE9 /* Play_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14F02798127600207EE9 /* Play_ViewController.swift */; };
+		496A14F32798128A00207EE9 /* Create_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14F22798128A00207EE9 /* Create_ViewController.swift */; };
+		496A14F52798131900207EE9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14F42798131900207EE9 /* TabBarViewController.swift */; };
+		496A14F7279813A200207EE9 /* Question_Response_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14F6279813A200207EE9 /* Question_Response_ViewController.swift */; };
+		496A14FB279813FB00207EE9 /* QCM_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14FA279813FB00207EE9 /* QCM_ViewController.swift */; };
+		496A14FD2798144D00207EE9 /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14FC2798144D00207EE9 /* FireBase.swift */; };
+		496A14FF2798147000207EE9 /* True_False_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A14FE2798147000207EE9 /* True_False_Model.swift */; };
+		496A15012798148B00207EE9 /* QCM_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A15002798148B00207EE9 /* QCM_Model.swift */; };
+		496A15032798149F00207EE9 /* Question_Response_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A15022798149F00207EE9 /* Question_Response_Model.swift */; };
 		49A945732795C2FB0046F0D0 /* True_False_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A945722795C2FB0046F0D0 /* True_False_ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +34,15 @@
 		4962F8A227886A150061C456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4962F8A527886A150061C456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4962F8A727886A150061C456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		496A14F02798127600207EE9 /* Play_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play_ViewController.swift; sourceTree = "<group>"; };
+		496A14F22798128A00207EE9 /* Create_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_ViewController.swift; sourceTree = "<group>"; };
+		496A14F42798131900207EE9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		496A14F6279813A200207EE9 /* Question_Response_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question_Response_ViewController.swift; sourceTree = "<group>"; };
+		496A14FA279813FB00207EE9 /* QCM_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCM_ViewController.swift; sourceTree = "<group>"; };
+		496A14FC2798144D00207EE9 /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
+		496A14FE2798147000207EE9 /* True_False_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = True_False_Model.swift; sourceTree = "<group>"; };
+		496A15002798148B00207EE9 /* QCM_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCM_Model.swift; sourceTree = "<group>"; };
+		496A15022798149F00207EE9 /* Question_Response_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question_Response_Model.swift; sourceTree = "<group>"; };
 		49A945722795C2FB0046F0D0 /* True_False_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = True_False_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +96,10 @@
 		49A9456F2795C1EA0046F0D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				496A14FC2798144D00207EE9 /* FireBase.swift */,
+				496A14FE2798147000207EE9 /* True_False_Model.swift */,
+				496A15002798148B00207EE9 /* QCM_Model.swift */,
+				496A15022798149F00207EE9 /* Question_Response_Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,7 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				4962F89D27886A140061C456 /* ViewController.swift */,
+				496A14F42798131900207EE9 /* TabBarViewController.swift */,
+				496A14F02798127600207EE9 /* Play_ViewController.swift */,
+				496A14F22798128A00207EE9 /* Create_ViewController.swift */,
 				49A945722795C2FB0046F0D0 /* True_False_ViewController.swift */,
+				496A14FA279813FB00207EE9 /* QCM_ViewController.swift */,
+				496A14F6279813A200207EE9 /* Question_Response_ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,9 +200,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496A14F32798128A00207EE9 /* Create_ViewController.swift in Sources */,
 				4962F89E27886A140061C456 /* ViewController.swift in Sources */,
+				496A14FD2798144D00207EE9 /* FireBase.swift in Sources */,
+				496A15012798148B00207EE9 /* QCM_Model.swift in Sources */,
 				4962F89A27886A140061C456 /* AppDelegate.swift in Sources */,
+				496A15032798149F00207EE9 /* Question_Response_Model.swift in Sources */,
+				496A14FF2798147000207EE9 /* True_False_Model.swift in Sources */,
 				49A945732795C2FB0046F0D0 /* True_False_ViewController.swift in Sources */,
+				496A14F52798131900207EE9 /* TabBarViewController.swift in Sources */,
+				496A14F7279813A200207EE9 /* Question_Response_ViewController.swift in Sources */,
+				496A14FB279813FB00207EE9 /* QCM_ViewController.swift in Sources */,
+				496A14F12798127600207EE9 /* Play_ViewController.swift in Sources */,
 				4962F89C27886A140061C456 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
