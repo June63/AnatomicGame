@@ -9,10 +9,11 @@ import UIKit
 
 class QCM : UIViewController {
 
+    // MARK: - Variables
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }

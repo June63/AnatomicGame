@@ -9,10 +9,12 @@ import UIKit
 
 class TrueFalse : UIViewController {
 
+    // MARK: - Variables
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
 }

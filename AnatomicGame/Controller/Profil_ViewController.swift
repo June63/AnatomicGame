@@ -1,5 +1,5 @@
 //
-//  Question_Response_ViewController.swift
+//  Profil_ViewController.swift
 //  AnatomicGame
 //
 //  Created by Léa Kieffer on 19/01/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionResponse : UIViewController {
+class Profil : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

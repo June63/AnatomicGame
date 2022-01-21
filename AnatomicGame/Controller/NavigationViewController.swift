@@ -1,13 +1,13 @@
 //
-//  Create_ViewController.swift
+//  NavigationViewController.swift
 //  AnatomicGame
 //
-//  Created by Léa Kieffer on 19/01/2022.
+//  Created by Léa Kieffer on 21/01/2022.
 //
 
 import UIKit
 
-class Create : UIViewController {
+class Navigation : UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
