@@ -10,7 +10,6 @@ import UIKit
 class TrueFalse : UIViewController {
 
     // MARK: - Variables
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
