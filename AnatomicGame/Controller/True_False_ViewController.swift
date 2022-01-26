@@ -10,6 +10,11 @@ import UIKit
 class TrueFalse : UIViewController {
 
     // MARK: - Variables
+ 
+    @IBOutlet weak var Question: UITextField!
+    @IBOutlet weak var True: UIButton!
+    @IBOutlet weak var False: UIButton!
+    @IBOutlet weak var Submit: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

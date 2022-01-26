@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -152,6 +151,18 @@
                             <constraint firstItem="BtH-Hd-Wor" firstAttribute="leading" secondItem="roI-9t-5lV" secondAttribute="leading" constant="190" id="wzv-sT-Oyc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="A" destination="QiB-ho-eGX" id="Z85-Im-xV6"/>
+                        <outlet property="B" destination="8wh-Uh-Tbo" id="mnw-BU-i6W"/>
+                        <outlet property="C" destination="zZH-F8-VOi" id="B2V-DA-vFe"/>
+                        <outlet property="D" destination="j6B-em-Kqn" id="Eff-MC-JPN"/>
+                        <outlet property="Question" destination="ZDs-dg-fSV" id="WRo-4o-gRO"/>
+                        <outlet property="ResponseA" destination="XVF-Ug-j3e" id="Bw4-Ae-32F"/>
+                        <outlet property="ResponseB" destination="8kQ-60-ANY" id="wo1-BA-LRG"/>
+                        <outlet property="ResponseC" destination="ogD-aW-4ee" id="aGd-Ck-Lvq"/>
+                        <outlet property="ResponseD" destination="0HI-cK-v2o" id="Chz-X1-hnm"/>
+                        <outlet property="Submit" destination="uOw-St-Srg" id="oUk-N0-jlv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgG-Dn-P0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,63 +171,33 @@
         <!--Play View Controller-->
         <scene sceneID="1hW-Gk-IBx">
             <objects>
-                <viewController id="ZVs-8z-TeT" userLabel="Play View Controller" sceneMemberID="viewController">
+                <viewController id="ZVs-8z-TeT" userLabel="Play View Controller" customClass="Play" customModule="AnatomicGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cxz-8o-8gp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e8e-jH-lbu">
-                                <rect key="frame" x="96" y="233" width="240" height="412"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ias-uU-tbq">
-                                    <size key="itemSize" width="199" height="397"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="59p-ja-uNv">
-                                        <rect key="frame" x="20.5" y="0.0" width="199" height="397"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="azM-Du-iCy">
-                                            <rect key="frame" x="0.0" y="0.0" width="199" height="397"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k21-fm-B3U">
-                                                    <rect key="frame" x="54" y="72" width="91" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="31" id="0kD-M3-FUg"/>
-                                                        <constraint firstAttribute="width" constant="91" id="6bt-KV-oof"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="True/Flase">
-                                                        <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
-                                                    </buttonConfiguration>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufo-oI-J09">
-                                                    <rect key="frame" x="66" y="215" width="67" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="Ddv-5K-snS"/>
-                                                        <constraint firstAttribute="width" constant="67" id="qkY-UU-Tcc"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="QCM">
-                                                        <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
-                                                    </buttonConfiguration>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ufo-oI-J09" firstAttribute="leading" secondItem="azM-Du-iCy" secondAttribute="leading" constant="66" id="7SO-Za-qlt"/>
-                                                <constraint firstItem="k21-fm-B3U" firstAttribute="leading" secondItem="azM-Du-iCy" secondAttribute="leading" constant="54" id="CHI-FA-jwn"/>
-                                                <constraint firstAttribute="bottom" secondItem="ufo-oI-J09" secondAttribute="bottom" constant="147" id="cyU-zG-7XC"/>
-                                                <constraint firstItem="ufo-oI-J09" firstAttribute="top" secondItem="k21-fm-B3U" secondAttribute="bottom" constant="112" id="dUs-MH-zLb"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="199" height="397"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-CM-oyH">
+                                <rect key="frame" x="174" y="484" width="67" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="eH5-HA-MZG"/>
+                                    <constraint firstAttribute="width" constant="67" id="yd0-1v-DxS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="QCM">
+                                    <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-nI-X7U">
+                                <rect key="frame" x="162" y="329" width="91" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="7qc-P9-o9g"/>
+                                    <constraint firstAttribute="width" constant="91" id="qbN-v7-aDC"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="True/Flase">
+                                    <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0cz-8P-TKt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -225,6 +206,10 @@
                         <barButtonItem key="leftBarButtonItem" title="Return" image="return" catalog="system" id="FO3-zG-ZxV"/>
                         <barButtonItem key="rightBarButtonItem" title="Addition" image="plus" catalog="system" id="vZB-hf-ucs"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="QCM" destination="ufm-CM-oyH" id="JSP-vh-BD9"/>
+                        <outlet property="TrueFalse" destination="WOM-nI-X7U" id="o04-f8-RQQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSR-r3-9tn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,6 +279,12 @@
                             <constraint firstItem="nM1-MT-VTh" firstAttribute="leading" secondItem="Ih4-9l-Q0L" secondAttribute="leading" constant="63" id="zBd-bK-Mel"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="False" destination="vvj-Ic-2K8" id="68e-3c-gZ9"/>
+                        <outlet property="Question" destination="Hgy-p7-FL3" id="85S-U3-OnV"/>
+                        <outlet property="Submit" destination="2V1-z3-az3" id="Rl8-F6-UtZ"/>
+                        <outlet property="True" destination="nM1-MT-VTh" id="e4I-Fs-zNE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0N8-g8-GyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
