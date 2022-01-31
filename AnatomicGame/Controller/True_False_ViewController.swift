@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 class TrueFalse : UIViewController {
 
-    // MARK: - Variables
+    // MARK: Outlet
  
     @IBOutlet weak var Question: UITextField!
     @IBOutlet weak var True: UIButton!

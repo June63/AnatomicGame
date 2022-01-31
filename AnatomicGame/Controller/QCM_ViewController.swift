@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 class QCM : UIViewController {
 
-    // MARK: - Variables
+    // MARK: Outlet
 
     @IBOutlet weak var Question: UITextField!
     @IBOutlet weak var A: UIButton!

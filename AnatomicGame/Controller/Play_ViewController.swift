@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import GameKit
+
 
 class Play : UIViewController {
 
-    // Marck
+    // MARK: Outlet
     
     @IBOutlet weak var TrueFalse: UIButton!
     @IBOutlet weak var QCM: UIButton!
@@ -19,5 +22,7 @@ class Play : UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+          }
 }
+
