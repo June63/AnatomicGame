@@ -6,25 +6,37 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 
 class QCM : UIViewController {
 
     // MARK: Outlet
 
     @IBOutlet weak var Question: UITextField!
-    @IBOutlet weak var A: UIButton!
-    @IBOutlet weak var ResponseA: UITextField!
-    @IBOutlet weak var B: UIButton!
-    @IBOutlet weak var ResponseB: UITextField!
-    @IBOutlet weak var C: UIButton!
-    @IBOutlet weak var ResponseC: UITextField!
-    @IBOutlet weak var D: UIButton!
-    @IBOutlet weak var ResponseD: UITextField!
-    @IBOutlet var Submit: UIView!
+    @IBOutlet weak var ResponseA: UIButton!
+    @IBOutlet weak var ResponseB: NSLayoutConstraint!
+    @IBOutlet weak var ResponseC: UIButton!
+    @IBOutlet var ResponseD: UIView!
+    @IBOutlet weak var Submit: UIButton!
+    
+    var score = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+
+    @IBAction func answerPressed(_ sender: UIButton) {
+        
+        if sender.tag == selectedAnswer {
+            print ("correct")
+            score += 3
+        } else {
+            print ("wrong")
+        }
+         updateQuesiton()
+    }
+    
 }

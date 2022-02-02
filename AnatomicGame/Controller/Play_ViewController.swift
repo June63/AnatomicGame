@@ -17,6 +17,13 @@ class Play : UIViewController {
     @IBOutlet weak var TrueFalse: UIButton!
     @IBOutlet weak var QCM: UIButton!
     
+    enum Mode {
+        case truefase
+        case qcm
+    }
+    
+    var mode: Mode = .truefase
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

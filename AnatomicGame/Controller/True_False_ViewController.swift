@@ -22,4 +22,14 @@ class TrueFalse : UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func answerPressed(_ sender: UIButton) {
+        
+        if sender.tag == selectedAnswer {
+            print ("correct")
+            score += 3
+        } else {
+            print ("wrong")
+        }
+         updateQuesiton()
+    }
 }
