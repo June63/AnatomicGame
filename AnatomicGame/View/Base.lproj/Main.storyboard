@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Ask your question ?" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yBl-YY-PaM">
-                                <rect key="frame" x="129.5" y="155" width="155" height="35"/>
+                                <rect key="frame" x="129.5" y="155" width="155" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="IyR-SL-joi"/>
                                     <constraint firstAttribute="width" constant="155" id="gBl-qM-x5y"/>
@@ -44,7 +44,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-dN-t75">
-                                <rect key="frame" x="172" y="737" width="70" height="31"/>
+                                <rect key="frame" x="172" y="736" width="70" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="WT8-WP-Abc"/>
                                     <constraint firstAttribute="height" constant="35" id="tid-wl-U75"/>
@@ -61,6 +61,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="A. Resmponse A"/>
                                 <connections>
+                                    <action selector="ClickedChoice:" destination="qtY-PA-VGC" eventType="touchUpInside" id="uCY-TB-Akf"/>
                                     <action selector="answerPressed:" destination="qtY-PA-VGC" eventType="touchUpInside" id="j0W-S4-Lfb"/>
                                 </connections>
                             </button>
@@ -209,6 +210,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="ClickedChoice:" destination="w5S-gB-Uod" eventType="touchUpInside" id="nUD-sT-EuS"/>
                                     <action selector="answerPressed:" destination="w5S-gB-Uod" eventType="touchUpInside" id="aak-kQ-GMk"/>
                                 </connections>
                             </button>

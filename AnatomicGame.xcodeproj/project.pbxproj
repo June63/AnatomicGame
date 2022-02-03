@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4962F89A27886A140061C456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962F89927886A140061C456 /* AppDelegate.swift */; };
 		4962F89C27886A140061C456 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962F89B27886A140061C456 /* SceneDelegate.swift */; };
-		4962F89E27886A140061C456 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962F89D27886A140061C456 /* ViewController.swift */; };
 		4962F8A127886A140061C456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4962F89F27886A140061C456 /* Main.storyboard */; };
 		4962F8A327886A150061C456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4962F8A227886A150061C456 /* Assets.xcassets */; };
 		4962F8A627886A150061C456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4962F8A427886A150061C456 /* LaunchScreen.storyboard */; };
@@ -46,18 +45,15 @@
 		49A39F6027A181FE00EC5E0E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 49A39F5F27A181FE00EC5E0E /* FirebaseStorageCombine-Community */; };
 		49A39F6227A181FE00EC5E0E /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 49A39F6127A181FE00EC5E0E /* FirebaseStorageSwift-Beta */; };
 		49A92AFF279B111200516443 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A92AFE279B111200516443 /* NavigationViewController.swift */; };
+		49C02D1C27AACA99007F8F83 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C02D1B27AACA99007F8F83 /* GameKit.framework */; };
 		49D3581A27A7EF2900A7014D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49D3581927A7EF2800A7014D /* GoogleService-Info.plist */; };
-		49D3581C27A82C9300A7014D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D3581B27A82C9300A7014D /* GameController.framework */; };
-		49D3581F27A82E3000A7014D /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D3581E27A82E3000A7014D /* HomeKit.framework */; };
-		49D3582127A82E5C00A7014D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D3582027A82E5C00A7014D /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		241B706B01B51AEB215722B1 /* Pods-AnatomicGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnatomicGame.release.xcconfig"; path = "Target Support Files/Pods-AnatomicGame/Pods-AnatomicGame.release.xcconfig"; sourceTree = "<group>"; };
-		4962F89627886A140061C456 /* AnatomicGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnatomicGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4930BEFE27AAEBFA00E71A0E /* AnatomicGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = AnatomicGame.app; path = "/Users/leakieffer/Documents/AnatomicGame/build/Debug-iphoneos/AnatomicGame.app"; sourceTree = "<absolute>"; };
+		4930BF0127AAECE000E71A0E /* AnatomicGame.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AnatomicGame.entitlements; sourceTree = "<group>"; };
 		4962F89927886A140061C456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4962F89B27886A140061C456 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4962F89D27886A140061C456 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4962F8A027886A140061C456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4962F8A227886A150061C456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4962F8A527886A150061C456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,13 +64,8 @@
 		496A14FA279813FB00207EE9 /* QCM_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCM_ViewController.swift; sourceTree = "<group>"; };
 		496A15042798193700207EE9 /* True_False_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = True_False_ViewController.swift; sourceTree = "<group>"; };
 		49A92AFE279B111200516443 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		49C02D1B27AACA99007F8F83 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		49D3581927A7EF2800A7014D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		49D3581B27A82C9300A7014D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
-		49D3581D27A82DF000A7014D /* AnatomicGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnatomicGame.entitlements; sourceTree = "<group>"; };
-		49D3581E27A82E3000A7014D /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
-		49D3582027A82E5C00A7014D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		92C7AFF3B9D390E29B882B20 /* Pods-AnatomicGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnatomicGame.debug.xcconfig"; path = "Target Support Files/Pods-AnatomicGame/Pods-AnatomicGame.debug.xcconfig"; sourceTree = "<group>"; };
-		A80947B991C2FB0AA254463D /* Pods_AnatomicGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnatomicGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,14 +75,12 @@
 			files = (
 				49A39F4627A181FE00EC5E0E /* FirebaseFirestoreCombine-Community in Frameworks */,
 				49A39F4027A181FE00EC5E0E /* FirebaseDatabaseSwift-Beta in Frameworks */,
-				49D3581F27A82E3000A7014D /* HomeKit.framework in Frameworks */,
 				49A39F4227A181FE00EC5E0E /* FirebaseDynamicLinks in Frameworks */,
 				49A39F5E27A181FE00EC5E0E /* FirebaseStorage in Frameworks */,
 				49A39F3427A181FE00EC5E0E /* FirebaseAppCheck in Frameworks */,
 				49A39F6227A181FE00EC5E0E /* FirebaseStorageSwift-Beta in Frameworks */,
 				49A39F3827A181FE00EC5E0E /* FirebaseAuth in Frameworks */,
 				49A39F3027A181FE00EC5E0E /* FirebaseAnalyticsSwift-Beta in Frameworks */,
-				49D3582127A82E5C00A7014D /* HealthKit.framework in Frameworks */,
 				49A39F5627A181FE00EC5E0E /* FirebaseMLModelDownloader in Frameworks */,
 				49A39F4427A181FE00EC5E0E /* FirebaseFirestore in Frameworks */,
 				49A39F4C27A181FE00EC5E0E /* FirebaseFunctionsCombine-Community in Frameworks */,
@@ -106,8 +95,8 @@
 				49A39F4E27A181FE00EC5E0E /* FirebaseFunctionsSwift-Beta in Frameworks */,
 				49A39F4A27A181FE00EC5E0E /* FirebaseFunctions in Frameworks */,
 				49A39F5A27A181FE00EC5E0E /* FirebasePerformance in Frameworks */,
-				49D3581C27A82C9300A7014D /* GameController.framework in Frameworks */,
 				49A39F5227A181FE00EC5E0E /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				49C02D1C27AACA99007F8F83 /* GameKit.framework in Frameworks */,
 				49A39F3A27A181FE00EC5E0E /* FirebaseAuthCombine-Community in Frameworks */,
 				49A39F2E27A181FE00EC5E0E /* FirebaseAnalytics in Frameworks */,
 				49A39F5827A181FE00EC5E0E /* FirebaseMessaging in Frameworks */,
@@ -122,24 +111,14 @@
 			isa = PBXGroup;
 			children = (
 				4962F89827886A140061C456 /* AnatomicGame */,
-				4962F89727886A140061C456 /* Products */,
-				AF4C6B72156FFE8E6EE4A1BD /* Pods */,
-				598FB1CE4DDFFC09F5C52336 /* Frameworks */,
+				49C02D1A27AACA99007F8F83 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		4962F89727886A140061C456 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4962F89627886A140061C456 /* AnatomicGame.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4962F89827886A140061C456 /* AnatomicGame */ = {
 			isa = PBXGroup;
 			children = (
-				49D3581D27A82DF000A7014D /* AnatomicGame.entitlements */,
+				4930BF0127AAECE000E71A0E /* AnatomicGame.entitlements */,
 				49A9456F2795C1EA0046F0D0 /* Model */,
 				49A9456E2795C1D40046F0D0 /* View */,
 				49A945702795C1F10046F0D0 /* Controller */,
@@ -168,7 +147,6 @@
 		49A945702795C1F10046F0D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4962F89D27886A140061C456 /* ViewController.swift */,
 				496A14F42798131900207EE9 /* TabBarViewController.swift */,
 				49A92AFE279B111200516443 /* NavigationViewController.swift */,
 				496A14F02798127600207EE9 /* Play_ViewController.swift */,
@@ -190,24 +168,12 @@
 			path = "Suporting Files";
 			sourceTree = "<group>";
 		};
-		598FB1CE4DDFFC09F5C52336 /* Frameworks */ = {
+		49C02D1A27AACA99007F8F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49D3582027A82E5C00A7014D /* HealthKit.framework */,
-				49D3581E27A82E3000A7014D /* HomeKit.framework */,
-				49D3581B27A82C9300A7014D /* GameController.framework */,
-				A80947B991C2FB0AA254463D /* Pods_AnatomicGame.framework */,
+				49C02D1B27AACA99007F8F83 /* GameKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AF4C6B72156FFE8E6EE4A1BD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				92C7AFF3B9D390E29B882B20 /* Pods-AnatomicGame.debug.xcconfig */,
-				241B706B01B51AEB215722B1 /* Pods-AnatomicGame.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +224,7 @@
 				49A39F6127A181FE00EC5E0E /* FirebaseStorageSwift-Beta */,
 			);
 			productName = AnatomicGame;
-			productReference = 4962F89627886A140061C456 /* AnatomicGame.app */;
+			productReference = 4930BEFE27AAEBFA00E71A0E /* AnatomicGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -288,7 +254,7 @@
 			packageReferences = (
 				49A39F2C27A181FE00EC5E0E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
-			productRefGroup = 4962F89727886A140061C456 /* Products */;
+			productRefGroup = 4962F88D27886A140061C456;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -360,7 +326,6 @@
 			files = (
 				49A92AFF279B111200516443 /* NavigationViewController.swift in Sources */,
 				496A14F32798128A00207EE9 /* Profil_ViewController.swift in Sources */,
-				4962F89E27886A140061C456 /* ViewController.swift in Sources */,
 				4962F89A27886A140061C456 /* AppDelegate.swift in Sources */,
 				496A14F52798131900207EE9 /* TabBarViewController.swift in Sources */,
 				496A14FB279813FB00207EE9 /* QCM_ViewController.swift in Sources */,
@@ -510,19 +475,19 @@
 		};
 		4962F8AB27886A150061C456 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92C7AFF3B9D390E29B882B20 /* Pods-AnatomicGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnatomicGame/AnatomicGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NG7UFN6T72;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AnatomicGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -540,19 +505,19 @@
 		};
 		4962F8AC27886A150061C456 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 241B706B01B51AEB215722B1 /* Pods-AnatomicGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnatomicGame/AnatomicGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NG7UFN6T72;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AnatomicGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
