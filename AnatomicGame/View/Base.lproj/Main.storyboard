@@ -30,27 +30,21 @@
         <scene sceneID="kVh-kC-G5K">
             <objects>
                 <viewController id="qtY-PA-VGC" userLabel="QCM View Controller" customClass="QCM" customModule="AnatomicGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uOw-St-Srg">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="QCMViewController" id="uOw-St-Srg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Ask your question ?" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yBl-YY-PaM">
-                                <rect key="frame" x="129.5" y="155" width="155" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="IyR-SL-joi"/>
-                                    <constraint firstAttribute="width" constant="155" id="gBl-qM-x5y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-dN-t75">
-                                <rect key="frame" x="172" y="737" width="70" height="31"/>
+                                <rect key="frame" x="172" y="733" width="70" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="WT8-WP-Abc"/>
                                     <constraint firstAttribute="height" constant="35" id="tid-wl-U75"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                                <connections>
+                                    <action selector="Validate:" destination="qtY-PA-VGC" eventType="touchUpInside" id="eQ4-mE-udF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-8e-ygI">
                                 <rect key="frame" x="20" y="348" width="130" height="35"/>
@@ -61,9 +55,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="A. Resmponse A"/>
                                 <connections>
-                                    <action selector="ChoiceResponse:" destination="qtY-PA-VGC" eventType="touchUpInside" id="ddv-ke-tVQ"/>
-                                    <action selector="ClickedChoice:" destination="qtY-PA-VGC" eventType="touchUpInside" id="uCY-TB-Akf"/>
-                                    <action selector="answerPressed:" destination="qtY-PA-VGC" eventType="touchUpInside" id="j0W-S4-Lfb"/>
+                                    <action selector="AnswerA:" destination="qtY-PA-VGC" eventType="touchUpInside" id="5ih-58-oOY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-QP-AsJ">
@@ -74,6 +66,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="B. Response B"/>
+                                <connections>
+                                    <action selector="AnswerB:" destination="qtY-PA-VGC" eventType="touchUpInside" id="Ob1-VD-XJG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGK-RY-5bY">
                                 <rect key="frame" x="20" y="483" width="120" height="35"/>
@@ -83,20 +78,35 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="C. Response C"/>
+                                <connections>
+                                    <action selector="AnswerC:" destination="qtY-PA-VGC" eventType="touchUpInside" id="NiV-rv-GR7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LH-IL-eR5">
                                 <rect key="frame" x="237" y="483" width="137" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="D. Response D"/>
+                                <connections>
+                                    <action selector="AnswerD:" destination="qtY-PA-VGC" eventType="touchUpInside" id="mMR-UB-fwN"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your question ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tC-0i-4V8">
+                                <rect key="frame" x="133" y="146" width="149" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="149" id="CXo-m5-PYt"/>
+                                    <constraint firstAttribute="height" constant="31" id="Zbt-Y5-tTl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="roI-9t-5lV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="i9H-8e-ygI" firstAttribute="baseline" secondItem="3oU-QP-AsJ" secondAttribute="baseline" id="1pY-bo-QPF"/>
-                            <constraint firstItem="wcP-dN-t75" firstAttribute="centerX" secondItem="yBl-YY-PaM" secondAttribute="centerX" id="872-nB-m9i"/>
-                            <constraint firstItem="yBl-YY-PaM" firstAttribute="top" secondItem="roI-9t-5lV" secondAttribute="top" constant="111" id="8iP-t0-GYG"/>
-                            <constraint firstItem="wcP-dN-t75" firstAttribute="top" secondItem="yBl-YY-PaM" secondAttribute="bottom" constant="547" id="DdJ-l4-Gab"/>
+                            <constraint firstItem="1tC-0i-4V8" firstAttribute="leading" secondItem="roI-9t-5lV" secondAttribute="leading" constant="133" id="25J-PN-qA7"/>
+                            <constraint firstItem="i9H-8e-ygI" firstAttribute="top" secondItem="1tC-0i-4V8" secondAttribute="bottom" constant="171" id="FaC-rY-tc6"/>
                             <constraint firstItem="3oU-QP-AsJ" firstAttribute="leading" secondItem="i9H-8e-ygI" secondAttribute="trailing" constant="86" id="G1s-7e-hlh"/>
                             <constraint firstItem="4LH-IL-eR5" firstAttribute="leading" secondItem="XGK-RY-5bY" secondAttribute="trailing" constant="97" id="J81-mA-HaI"/>
                             <constraint firstItem="XGK-RY-5bY" firstAttribute="top" secondItem="i9H-8e-ygI" secondAttribute="bottom" constant="100" id="Lfv-8i-oW1"/>
@@ -110,12 +120,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Question" destination="yBl-YY-PaM" id="9yI-CI-ZDY"/>
-                        <outlet property="ResponseA" destination="i9H-8e-ygI" id="hpR-fx-QA3"/>
-                        <outlet property="ResponseB" destination="1pY-bo-QPF" id="mVJ-1y-21J"/>
-                        <outlet property="ResponseC" destination="XGK-RY-5bY" id="TUK-kZ-7UL"/>
-                        <outlet property="ResponseD" destination="uOw-St-Srg" id="8Ag-Zf-Us1"/>
-                        <outlet property="Submit" destination="wcP-dN-t75" id="kJl-8J-bj5"/>
+                        <outlet property="ChoiceA" destination="i9H-8e-ygI" id="Zxz-qv-dOs"/>
+                        <outlet property="ChoiceB" destination="3oU-QP-AsJ" id="6pv-Ow-eRK"/>
+                        <outlet property="ChoiceC" destination="XGK-RY-5bY" id="oMM-fp-biI"/>
+                        <outlet property="ChoiceD" destination="4LH-IL-eR5" id="unl-3q-UKS"/>
+                        <outlet property="Question" destination="1tC-0i-4V8" id="naz-UO-deo"/>
+                        <outlet property="Validate" destination="wcP-dN-t75" id="vSV-79-5pB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgG-Dn-P0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -142,6 +152,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="QCM">
                                     <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="launchQCM:" destination="ZVs-8z-TeT" eventType="touchUpInside" id="aj1-NL-3lv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-nI-X7U">
                                 <rect key="frame" x="162" y="329" width="91" height="31"/>
@@ -156,7 +169,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="ClickedTrueFalse:" destination="ZVs-8z-TeT" eventType="touchUpInside" id="Iu6-s6-oJs"/>
+                                    <action selector="launchTrueFalse:" destination="ZVs-8z-TeT" eventType="touchUpInside" id="wuR-Vf-sUu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -177,10 +190,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Return" image="return" catalog="system" id="FO3-zG-ZxV"/>
                         <barButtonItem key="rightBarButtonItem" title="Addition" image="plus" catalog="system" id="vZB-hf-ucs"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="QCM" destination="ufm-CM-oyH" id="JSP-vh-BD9"/>
-                        <outlet property="TrueFalse" destination="WOM-nI-X7U" id="o04-f8-RQQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSR-r3-9tn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,19 +199,10 @@
         <scene sceneID="qkR-Ya-Ltc">
             <objects>
                 <viewController id="w5S-gB-Uod" userLabel="True_False View Controller" customClass="TrueFalse" customModule="AnatomicGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0LD-xD-k9J">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="TrueFalseViewController" id="0LD-xD-k9J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Asl your question ?" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hgy-p7-FL3">
-                                <rect key="frame" x="119" y="203" width="177" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="TBB-TF-j8j"/>
-                                    <constraint firstAttribute="width" constant="177" id="jfH-Jx-nuE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM1-MT-VTh">
                                 <rect key="frame" x="63" y="433" width="53" height="31"/>
                                 <constraints>
@@ -213,10 +213,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="True">
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="ClickedChoice:" destination="w5S-gB-Uod" eventType="touchUpInside" id="nUD-sT-EuS"/>
-                                    <action selector="answerPressed:" destination="w5S-gB-Uod" eventType="touchUpInside" id="aak-kQ-GMk"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-Ic-2K8">
                                 <rect key="frame" x="278" y="433" width="58" height="31"/>
@@ -238,28 +234,30 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your question ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cX-VE-di2">
+                                <rect key="frame" x="133" y="139" width="149" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3ve-8k-9pi"/>
+                                    <constraint firstAttribute="width" constant="149" id="7HF-ZC-q9y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ih4-9l-Q0L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ih4-9l-Q0L" firstAttribute="bottom" secondItem="Hgy-p7-FL3" secondAttribute="bottom" constant="625" id="0t4-M8-5KH"/>
                             <constraint firstItem="Ih4-9l-Q0L" firstAttribute="bottom" secondItem="nM1-MT-VTh" secondAttribute="bottom" constant="398" id="1rF-77-6c4"/>
+                            <constraint firstItem="vvj-Ic-2K8" firstAttribute="top" secondItem="6cX-VE-di2" secondAttribute="bottom" constant="264" id="9bw-mA-ixS"/>
                             <constraint firstItem="Ih4-9l-Q0L" firstAttribute="bottom" secondItem="vvj-Ic-2K8" secondAttribute="bottom" constant="398" id="CVw-0n-cuU"/>
                             <constraint firstItem="Ih4-9l-Q0L" firstAttribute="bottom" secondItem="2V1-z3-az3" secondAttribute="bottom" constant="218" id="FAG-gU-97P"/>
                             <constraint firstItem="vvj-Ic-2K8" firstAttribute="leading" secondItem="nM1-MT-VTh" secondAttribute="trailing" constant="162" id="R5g-hj-fkf"/>
-                            <constraint firstItem="Hgy-p7-FL3" firstAttribute="top" secondItem="Ih4-9l-Q0L" secondAttribute="top" constant="159" id="cTc-6X-2BG"/>
                             <constraint firstItem="2V1-z3-az3" firstAttribute="leading" secondItem="Ih4-9l-Q0L" secondAttribute="leading" constant="173" id="dP8-9S-JED"/>
-                            <constraint firstItem="Ih4-9l-Q0L" firstAttribute="trailing" secondItem="Hgy-p7-FL3" secondAttribute="trailing" constant="118" id="jZg-Fp-VEz"/>
-                            <constraint firstItem="Hgy-p7-FL3" firstAttribute="leading" secondItem="Ih4-9l-Q0L" secondAttribute="leading" constant="119" id="tfD-9P-WSS"/>
+                            <constraint firstItem="6cX-VE-di2" firstAttribute="leading" secondItem="Ih4-9l-Q0L" secondAttribute="leading" constant="133" id="sNk-FO-WDL"/>
                             <constraint firstItem="nM1-MT-VTh" firstAttribute="leading" secondItem="Ih4-9l-Q0L" secondAttribute="leading" constant="63" id="zBd-bK-Mel"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="False" destination="vvj-Ic-2K8" id="68e-3c-gZ9"/>
-                        <outlet property="Question" destination="Hgy-p7-FL3" id="85S-U3-OnV"/>
-                        <outlet property="Submit" destination="2V1-z3-az3" id="Rl8-F6-UtZ"/>
-                        <outlet property="True" destination="nM1-MT-VTh" id="e4I-Fs-zNE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0N8-g8-GyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

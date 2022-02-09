@@ -13,41 +13,32 @@ import GameKit
 
 class Play : UIViewController {
 
-    // MARK: Outlet
-    
-    @IBOutlet weak var TrueFalseButton: UIButton!
-    @IBOutlet weak var QCMButton: UIButton!
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func ChooseGame(_ sender: UIButton) {
-        
-        /*if tu clique sur le bouton QCM {
+    /*override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (Auth.auth().currentUser == nil){
+            gamecenterAuth()
+    }   }*/
     
-            QCM.shared.setupQCM()
-         
-        } else if tu clique sur le bouton TrueFalse {
-         
-            TrueFalse.shared.setupTrueFalse
-         
-        } else {
-          
-         print("choose your game")
-         
-         }*/
+    
+    @IBAction func launchTrueFalse(_ sender: Any) {
+        let trueFalseViewController = storyboard?.instantiateViewController(withIdentifier: "TrueFalseViewController") as! TrueFalse
+        //trueFalseViewController.modalPresentationStyle = .fullScreen
+        present(trueFalseViewController, animated: true, completion: nil)
     }
     
     
+    @IBAction func launchQCM(_ sender: Any) {
+        let qcmViewController = storyboard?.instantiateViewController(withIdentifier: "QCMViewController") as! QCM
+        //qcmViewController.modalPresentationStyle = .fullScreen
+        present(qcmViewController, animated: true, completion: nil)
+    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if (Auth.auth().currentUser == nil){
-            firebaseAuth()
-            gamecenterAuth()
-    }   }
+    
     
     func gamecenterAuth() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
@@ -57,6 +48,16 @@ class Play : UIViewController {
             }
             if error != nil {
                 // Player could not be authenticated.
+                GameCenterAuthProvider.getCredential() { (credential, error) in
+                    if error != nil {
+                    return
+                  }
+                  // The credential can be used to sign in, or re-auth, or link or unlink.
+                    Auth.auth().signIn(with:credential!) { (user, error) in
+                        if error != nil {
+                      return
+                    }
+                    } } }
                 // Disable Game Center in the game.
                 return
             }
@@ -74,18 +75,3 @@ class Play : UIViewController {
         }
     }
     
-    func firebaseAuth() {
-
-        GameCenterAuthProvider.getCredential() { (credential, error) in
-            if error != nil {
-            return
-          }
-          // The credential can be used to sign in, or re-auth, or link or unlink.
-            Auth.auth().signIn(with:credential!) { (user, error) in
-                if error != nil {
-              return
-            }
-            } } }
-    
-    
-}

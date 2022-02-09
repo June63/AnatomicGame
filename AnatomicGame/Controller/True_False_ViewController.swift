@@ -12,10 +12,6 @@ class TrueFalse : UIViewController {
 
     // MARK: Outlet
  
-    @IBOutlet weak var Question: UITextField!
-    @IBOutlet weak var True: UIButton!
-    @IBOutlet weak var False: UIButton!
-    @IBOutlet weak var Submit: UIButton!
     
     // MARK variable
     
@@ -30,25 +26,13 @@ class TrueFalse : UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func setupTrueFalse(){
-        QuestionData()
-        TrueFalseGame()
-        ChoiceResponse(True, False)
-    }
-    
-    @IBAction func ChoiceResponse(_ sender: UIButton) {
-        /*if la reponse est correct {
-         alertResponseTrue()
-        } else {
-         alertResponseFalse()
-        }*/
-    }
+
     
     
     func TrueFalseGame(){
-        choixArray = []
+
         while questionIndex < 3 {
-            
+            choixArray = []
             db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
                     if let document = document, document.exists {
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
