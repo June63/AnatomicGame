@@ -29,8 +29,8 @@
         <!--QCM View Controller-->
         <scene sceneID="kVh-kC-G5K">
             <objects>
-                <viewController id="qtY-PA-VGC" userLabel="QCM View Controller" customClass="QCM" customModule="AnatomicGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="QCMViewController" id="uOw-St-Srg">
+                <viewController storyboardIdentifier="QCMViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qtY-PA-VGC" userLabel="QCM View Controller" customClass="QCM" customModule="AnatomicGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="uOw-St-Srg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -103,6 +103,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="roI-9t-5lV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="i9H-8e-ygI" firstAttribute="baseline" secondItem="3oU-QP-AsJ" secondAttribute="baseline" id="1pY-bo-QPF"/>
                             <constraint firstItem="1tC-0i-4V8" firstAttribute="leading" secondItem="roI-9t-5lV" secondAttribute="leading" constant="133" id="25J-PN-qA7"/>
@@ -198,8 +201,8 @@
         <!--True_False View Controller-->
         <scene sceneID="qkR-Ya-Ltc">
             <objects>
-                <viewController id="w5S-gB-Uod" userLabel="True_False View Controller" customClass="TrueFalse" customModule="AnatomicGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="TrueFalseViewController" id="0LD-xD-k9J">
+                <viewController storyboardIdentifier="TrueFalseViewController" id="w5S-gB-Uod" userLabel="True_False View Controller" customClass="TrueFalse" customModule="AnatomicGame" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0LD-xD-k9J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -213,6 +216,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="True">
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="ChooseTrue:" destination="w5S-gB-Uod" eventType="touchUpInside" id="GLu-6x-NaI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-Ic-2K8">
                                 <rect key="frame" x="278" y="433" width="58" height="31"/>
@@ -224,6 +230,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="False">
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="ChooseFalse:" destination="w5S-gB-Uod" eventType="touchUpInside" id="zVa-YT-XQO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
                                 <rect key="frame" x="173" y="613" width="70" height="31"/>
@@ -233,6 +242,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                                <connections>
+                                    <action selector="Validate:" destination="w5S-gB-Uod" eventType="touchUpInside" id="N7Z-5e-m50"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your question ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cX-VE-di2">
                                 <rect key="frame" x="133" y="139" width="149" height="30"/>
@@ -258,6 +270,12 @@
                             <constraint firstItem="nM1-MT-VTh" firstAttribute="leading" secondItem="Ih4-9l-Q0L" secondAttribute="leading" constant="63" id="zBd-bK-Mel"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="False" destination="vvj-Ic-2K8" id="SHa-G6-h6O"/>
+                        <outlet property="Question" destination="6cX-VE-di2" id="a0G-te-akv"/>
+                        <outlet property="True" destination="nM1-MT-VTh" id="BU1-MT-ddB"/>
+                        <outlet property="Validate" destination="2V1-z3-az3" id="bx5-6p-ufi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0N8-g8-GyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
+
 class QCM : UIViewController {
 
     // MARK: Outlet
@@ -54,9 +55,9 @@ class QCM : UIViewController {
     }
     
 
-    @IBAction func Validate(_ sender: Any) {
-        db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
-            let response = document.get("Response") as! String
+    @IBAction func Validate(_ sender: UIButton) {
+        /*db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
+            let response = document.get("Response") as? String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
                 let goodRespoonse = response.get("Response")
                 if responseChoosen.toString() == goodRespoonse {
@@ -66,15 +67,15 @@ class QCM : UIViewController {
                 }
                 DispatchQueue.main.async {
                     questionIndex++
-                    GoQCM()
+                    Start()
                 }
             }
         }
-    }
+    */}
     
     
 
-    func GoQCM(){
+    func Start(){
         choiceArray = []
         db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
                     if let document = document, document.exists {
@@ -87,10 +88,10 @@ class QCM : UIViewController {
                             }   }
                         DispatchQueue.main.async {
                             self.Question.text = document.get("Question") as? String
-                            let i = 0
-                            while i <= self.choiceArray.count {
+                            var response = document.get("Response") as? String
+                            for response in 0..<(self.choiceArray.count-1) {
                                 
-                                switch i {
+                                switch response {
                                         
                                     case 0:
                                         self.ChoiceA.setTitle(self.choiceArray[0], for: .normal)
@@ -121,7 +122,7 @@ class QCM : UIViewController {
     }
     
 
-    func QuestionQCMData(){
+    func QCMData(){
         db.collection("QCM").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")

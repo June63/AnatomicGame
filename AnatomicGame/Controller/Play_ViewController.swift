@@ -18,11 +18,12 @@ class Play : UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (Auth.auth().currentUser == nil){
+        /*if (Auth.auth().currentUser == nil){
             gamecenterAuth()
-    }   }*/
+        }*/
+    }
     
     
     @IBAction func launchTrueFalse(_ sender: Any) {
@@ -40,7 +41,7 @@ class Play : UIViewController {
     
     
     
-    func gamecenterAuth() {
+    /*func gamecenterAuth() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
             if viewController != nil {
                 // Present the view controller so the player can sign in.
@@ -72,6 +73,6 @@ class Play : UIViewController {
             if GKLocalPlayer.local.isPersonalizedCommunicationRestricted {
                 // Disable in game communication UI.
             }
-        }
+        }*/
     }
     
