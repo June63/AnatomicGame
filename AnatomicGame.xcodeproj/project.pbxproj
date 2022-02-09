@@ -50,7 +50,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4930BEFE27AAEBFA00E71A0E /* AnatomicGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = AnatomicGame.app; path = "/Users/leakieffer/Documents/AnatomicGame/build/Debug-iphoneos/AnatomicGame.app"; sourceTree = "<absolute>"; };
 		4930BF0127AAECE000E71A0E /* AnatomicGame.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AnatomicGame.entitlements; sourceTree = "<group>"; };
 		4962F89927886A140061C456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4962F89B27886A140061C456 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		496A14F42798131900207EE9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		496A14FA279813FB00207EE9 /* QCM_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCM_ViewController.swift; sourceTree = "<group>"; };
 		496A15042798193700207EE9 /* True_False_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = True_False_ViewController.swift; sourceTree = "<group>"; };
+		4999E46427B2868400CB75D8 /* AnatomicGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = AnatomicGame.app; path = "/Users/leakieffer/Documents/AnatomicGame/build/Debug-iphoneos/AnatomicGame.app"; sourceTree = "<absolute>"; };
 		49A92AFE279B111200516443 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		49C02D1B27AACA99007F8F83 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		49D3581927A7EF2800A7014D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 				49A39F6127A181FE00EC5E0E /* FirebaseStorageSwift-Beta */,
 			);
 			productName = AnatomicGame;
-			productReference = 4930BEFE27AAEBFA00E71A0E /* AnatomicGame.app */;
+			productReference = 4999E46427B2868400CB75D8 /* AnatomicGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

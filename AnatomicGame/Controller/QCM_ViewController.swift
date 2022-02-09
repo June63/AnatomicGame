@@ -25,21 +25,30 @@ class QCM : UIViewController {
     var questionArray = [String]()
     var choixArray = [String]()
     var questionIndex = 0
+    static var shared = QCM()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func ClickedChoice(_ sender: UIButton) {
-        if  {
-            print ("correct")
-        } else {
-            print ("wrong")
-        }
+    func setupQCM(){
+        QuestionData()
+        QCMGame()
+        ChoiceResponse(ResponseA, ResponseB, ResponseC, ResponseD)
     }
     
-    func qcm(){
+    @IBAction func ChoiceResponse(_ sender: UIButton) {
+        /*if la reponse est correct {
+         alertResponseTrue()
+        } else {
+         alertResponseFalse()
+        }*/
+    }
+  
+    func QCMGame(){
         choixArray = []
         while questionIndex < 3 {
             db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
@@ -48,7 +57,7 @@ class QCM : UIViewController {
                         print("Document data: \(dataDescription)")
                         let entitled = document.get("Combien d os compose l articulation du poignet ?") as! String
                         document.collection("Choix").getDocuments { (document, error) in
-                            for document in querySnapchot.documents {
+                            for document in QuerySnapshot.documents {
                                 print ("\(document.documentID) => \(document.data())")
                                 self.choixArray.append(document.documentID)
                             }   }
@@ -72,4 +81,22 @@ class QCM : UIViewController {
                     self.questionArray.append(document.documentID)
             }   }   }   }
 
+    func alertResponseFalse() {
+        let alertVC = UIAlertController(title: "Response",
+                                        message: "Mauvaise reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    func alertResponseTrue() {
+        let alertVC = UIAlertController(title: "Response",
+                                        message: "Bonne reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
 }

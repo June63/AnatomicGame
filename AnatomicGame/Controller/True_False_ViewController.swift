@@ -23,22 +23,29 @@ class TrueFalse : UIViewController {
     var questionArray = [String]()
     var choixArray = [String]()
     var questionIndex = 0
-    
+    static var shared = TrueFalse()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func ClickedChoice(_ sender: UIButton) {
-        if  {
-            print ("correct")
+    func setupTrueFalse(){
+        QuestionData()
+        TrueFalseGame()
+        ChoiceResponse(True, False)
+    }
+    
+    @IBAction func ChoiceResponse(_ sender: UIButton) {
+        /*if la reponse est correct {
+         alertResponseTrue()
         } else {
-            print ("wrong")
-        }
+         alertResponseFalse()
+        }*/
     }
     
     
-    func TrueFalse(){
+    func TrueFalseGame(){
         choixArray = []
         while questionIndex < 3 {
             
@@ -47,8 +54,8 @@ class TrueFalse : UIViewController {
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                         print("Document data: \(dataDescription)")
                         let entitled = document.get("Le tibia est l os de la jambe ?") as! String
-                        document.collection("choix").getDocuments { (document, error) in
-                            for document in querySnapchot.documents {
+                        document.collection("Choix").getDocuments { (document, error) in
+                            for document in QuerySnapshot.documents {
                                 print ("\(document.documentID) => \(document.data())")
                                 self.choixArray.append(document.documentID)
                             }   }
@@ -72,4 +79,22 @@ class TrueFalse : UIViewController {
                     print("\(document.documentID) => \(document.data())")
                     self.questionArray.append(document.documentID)
             }   }   }   }
+    
+    func alertResponseFalse() {
+        let alertVC = UIAlertController(title: "Response",
+                                        message: "Mauvaise reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    func alertResponseTrue() {
+        let alertVC = UIAlertController(title: "Response",
+                                        message: "Bonne réponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
 }

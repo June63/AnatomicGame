@@ -15,22 +15,39 @@ class Play : UIViewController {
 
     // MARK: Outlet
     
-    @IBOutlet weak var TrueFalse: UIButton!
-    @IBOutlet weak var QCM: UIButton!
+    @IBOutlet weak var TrueFalseButton: UIButton!
+    @IBOutlet weak var QCMButton: UIButton!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func ChooseGame(_ sender: UIButton) {
+        
+        /*if tu clique sur le bouton QCM {
+    
+            QCM.shared.setupQCM()
+         
+        } else if tu clique sur le bouton TrueFalse {
+         
+            TrueFalse.shared.setupTrueFalse
+         
+        } else {
+          
+         print("choose your game")
+         
+         }*/
+    }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (Auth.auth().currentUser == nil){
-            gamecenterAuth()
             firebaseAuth()
-        }
-    
-    }
+            gamecenterAuth()
+    }   }
     
     func gamecenterAuth() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
@@ -60,12 +77,12 @@ class Play : UIViewController {
     func firebaseAuth() {
 
         GameCenterAuthProvider.getCredential() { (credential, error) in
-          if let error = error {
+            if error != nil {
             return
           }
           // The credential can be used to sign in, or re-auth, or link or unlink.
-            Auth.auth().signIn(with:credential) { (user, error) in
-            if let error = error {
+            Auth.auth().signIn(with:credential!) { (user, error) in
+                if error != nil {
               return
             }
             } } }
