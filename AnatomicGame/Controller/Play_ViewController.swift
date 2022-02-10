@@ -39,9 +39,7 @@ class Play : UIViewController {
         present(qcmViewController, animated: true, completion: nil)
     }
     
-    
-    
-    /*func gamecenterAuth() {
+    func gamecenterAuth() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
             if viewController != nil {
                 // Present the view controller so the player can sign in.
@@ -73,6 +71,6 @@ class Play : UIViewController {
             if GKLocalPlayer.local.isPersonalizedCommunicationRestricted {
                 // Disable in game communication UI.
             }
-        }*/
+        }
     }
     

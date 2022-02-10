@@ -20,8 +20,8 @@ class TrueFalse : UIViewController {
     // Mark: Variable
     
     let db = Firestore.firestore()
-    var questionArray: [String] = []
-    var choiceArray: [String] = []
+    var arrayOfData: [String] = []
+    var arrayOfChoice: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
 
@@ -64,32 +64,32 @@ class TrueFalse : UIViewController {
     */}
 
     func Start(){
-        choiceArray = []
-        db.collection("TrueFalse").document(questionArray[questionIndex]).getDocument { (document, error) in
+        arrayOfChoice = []
+        db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
                     if let document = document, document.exists {
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                         print("Document data: \(dataDescription)")
                         self.db.collection("TrueFalse").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
                             for documents in documentSecond!.documents {
                                 print ("\(documents.documentID) => \(documents.data())")
-                                self.choiceArray.append(documents.documentID)
+                                self.arrayOfChoice.append(documents.documentID)
                             }
                         }
                         DispatchQueue.main.async {
                             self.Question.text = document.get("Question") as? String
-                            let response = document.get("Response") as! String
-                            for response in 0..<(self.choiceArray.count-1) {
+                            /*let response = document.get("Response") as! String
+                            for response in 0..<(self.arrayOfChoice.count-1) {
                                 switch response {
                                     case 0:
-                                        self.True.setTitle(self.choiceArray[0], for: .normal)
+                                        self.True.setTitle(self.arrayOfChoice[0], for: .normal)
                                         break
                                     case 1:
-                                        self.False.setTitle(self.choiceArray[1], for: .normal)
+                                        self.False.setTitle(self.arrayOfChoice[1], for: .normal)
                                         break
                                     default:
                                         print("Error")
                                 }
-                            }
+                            }*/
                         }
                         
                     } else {
@@ -106,7 +106,7 @@ class TrueFalse : UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    self.questionArray.append(document.documentID)
+                    self.arrayOfData.append(document.documentID)
                 }
             }
         }

@@ -23,15 +23,16 @@ class QCM : UIViewController {
     // MARK variable
     
     let db = Firestore.firestore()
-    var questionArray: [String] = []
-    var choiceArray: [String] = []
+    var arrayOfData: [String] = []
+    var arrayOfChoice: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        QCMData()
+        //Start()
     }
 
     @IBAction func AnswerA(_ sender: UIButton) {
@@ -76,44 +77,44 @@ class QCM : UIViewController {
     
 
     func Start(){
-        choiceArray = []
-        db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
+        arrayOfData = []
+        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
                     if let document = document, document.exists {
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                         print("Document data: \(dataDescription)")
                         self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
                             for documents in documentSecond!.documents {
                                 print ("\(documents.documentID) => \(documents.data())")
-                                self.choiceArray.append(documents.documentID)
+                                self.arrayOfChoice.append(documents.documentID)
                             }   }
                         DispatchQueue.main.async {
                             self.Question.text = document.get("Question") as? String
-                            var response = document.get("Response") as? String
-                            for response in 0..<(self.choiceArray.count-1) {
+                            /*var response = document.get("Response") as? String
+                            for response in 0..<(self.arrayOfChoice.count-1) {
                                 
                                 switch response {
                                         
                                     case 0:
-                                        self.ChoiceA.setTitle(self.choiceArray[0], for: .normal)
+                                        self.ChoiceA.setTitle(self.arrayOfChoice[0], for: .normal)
                                         break
                                         
                                     case 1:
-                                        self.ChoiceB.setTitle(self.choiceArray[1], for: .normal)
+                                        self.ChoiceB.setTitle(self.arrayOfChoice[1], for: .normal)
                                         break
                                         
                                     case 2:
-                                        self.ChoiceC.setTitle(self.choiceArray[2], for: .normal)
+                                        self.ChoiceC.setTitle(self.arrayOfChoice[2], for: .normal)
                                         break
                                         
                                     case 3:
-                                        self.ChoiceD.setTitle(self.choiceArray[3], for: .normal)
+                                        self.ChoiceD.setTitle(self.arrayOfChoice[3], for: .normal)
                                         break
                                         
                                     default:
                                         print("Error")
                                 }
                                 
-                            }
+                            }*/
                         }
                     } else {
                         print("Document does not exist")
@@ -129,7 +130,7 @@ class QCM : UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    self.questionArray.append(document.documentID)
+                    self.arrayOfData.append(document.documentID)
                 }
             }
         }
