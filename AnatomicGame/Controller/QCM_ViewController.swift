@@ -32,7 +32,7 @@ class QCM : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         QCMData()
-        //Start()
+        Start()
     }
 
     @IBAction func AnswerA(_ sender: UIButton) {
