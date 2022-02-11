@@ -31,48 +31,41 @@ class QCM : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         QuestionData()
-        AnswerA(ChoiceA as Any)
-        AnswerB(ChoiceB as Any)
-        AnswerC(ChoiceC as Any)
-        AnswerD(ChoiceD as Any)
-        //Validation(validate as Any)
-        
     }
 
-    @IBAction func AnswerA(_ sender: Any) {
-        let button = sender as! UIButton
-        responseChoosen = button.tag
+    @IBAction func AnswerA(_ sender: UIButton) {
+        responseChoosen = sender.tag
+        ChoiceA.backgroundColor = UIColor.green
     }
     
-    @IBAction func AnswerB(_ sender: Any) {
-        let button = sender as! UIButton
-        responseChoosen = button.tag
+    @IBAction func AnswerB(_ sender: UIButton) {
+        responseChoosen = sender.tag
+        ChoiceB.backgroundColor = UIColor.green
     }
     
-    @IBAction func AnswerC(_ sender: Any) {
-        let button = sender as! UIButton
-        responseChoosen = button.tag
+    @IBAction func AnswerC(_ sender: UIButton) {
+        responseChoosen = sender.tag
+        ChoiceC.backgroundColor = UIColor.gree,
     }
     
-    @IBAction func AnswerD(_ sender: Any) {
-        let button = sender as! UIButton
-        responseChoosen = button.tag
+    @IBAction func AnswerD(_ sender: UIButton) {
+        responseChoosen = sender.tag
+        ChoiceD.backgroundColor = UIColor.green
     }
-    
 
-    @IBAction func Validation(_ sender: Any) {
+    @IBAction func Validation(_ sender: UIButton) {
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            let response = document.get("Response") as! String
+        let response = document!.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
-                let goodRespoonse = response.get("Response")
-                if responseChoosen.toString() == goodRespoonse {
-                    alertResponseTrue()
+                /*let goodRespoonse = response.get("Response")
+                if self.responseChoosen.toString() == goodRespoonse {
+                    self.alertResponseTrue()
                 } else {
-                    alertResponseFalse()
-                }
+                    self.alertResponseFalse()
+                }*/
                 DispatchQueue.main.async {
-                    questionIndex++
-                    Start()
+                    self.questionIndex += 1
+                    self.Start()
                 }
             }
         }
@@ -125,20 +118,36 @@ class QCM : UIViewController {
                         while i <= self.arrayOfChoice.count {
                             switch i {
                                 case 0:
-                                    self.ChoiceA.setTitle(self.arrayOfChoice[0], for: .normal)
-                                    //self.ChoiceA.setTitle(documents.get("Response") as? String, for: .normal)
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
+                                        let choice = choix!.get("Response") as! String
+                                        DispatchQueue.main.async {
+                                        self.ChoiceA.setTitle(choice, for: .normal)
+                                        }
+                                    }
                                     break
                                 case 1:
-                                    self.ChoiceB.setTitle(self.arrayOfChoice[1], for: .normal)
-                                    //self.ChoiceB.setTitle(documents.get("Response") as? String, for: .normal)
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[1]).getDocument { (choix, error) in
+                                        let choice = choix!.get("Response") as! String
+                                        DispatchQueue.main.async {
+                                        self.ChoiceB.setTitle(choice, for: .normal)
+                                        }
+                                    }
                                     break
                                 case 2:
-                                    self.ChoiceC.setTitle(self.arrayOfChoice[2], for: .normal)
-                                    //self.ChoiceC.setTitle(documents.get("Response") as? String, for: .normal)
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[2]).getDocument { (choix, error) in
+                                        let choice = choix!.get("Response") as! String
+                                        DispatchQueue.main.async {
+                                        self.ChoiceC.setTitle(choice, for: .normal)
+                                        }
+                                    }
                                     break
                                 case 3:
-                                    self.ChoiceD.setTitle(self.arrayOfChoice[3], for: .normal)
-                                    //self.ChoiceD.setTitle(documents.get("Response") as? String, for: .normal)
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[3]).getDocument { (choix, error) in
+                                        let choice = choix!.get("Response") as! String
+                                        DispatchQueue.main.async {
+                                        self.ChoiceD.setTitle(choice, for: .normal)
+                                        }
+                                    }
                                     break
                                 default:
                                     print("Error")
@@ -148,6 +157,11 @@ class QCM : UIViewController {
                     }
                 }
                 }
+                self.AnswerA(self.ChoiceA)
+                self.AnswerB(self.ChoiceB)
+                self.AnswerC(self.ChoiceC)
+                self.AnswerD(self.ChoiceD)
+                //self.Validation(self.Validate)
             } else {
                 print("Document does not exist")
             }

@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-dN-t75">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcP-dN-t75">
                                 <rect key="frame" x="149.5" y="483" width="76" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Xx5-G3-njE"/>
@@ -42,34 +42,42 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Validate"/>
                                 <connections>
-                                    <action selector="Validate:" destination="qtY-PA-VGC" eventType="touchUpInside" id="eQ4-mE-udF"/>
+                                    <action selector="Validation:" destination="qtY-PA-VGC" eventType="touchDown" id="WaM-ZG-WWq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-8e-ygI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-8e-ygI">
                                 <rect key="frame" x="37" y="293" width="100.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100.5" id="5Bz-P5-AMK"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="A. Choice A"/>
                                 <connections>
-                                    <action selector="AnswerA:" destination="qtY-PA-VGC" eventType="touchUpInside" id="5ih-58-oOY"/>
+                                    <action selector="AnwserA:" destination="qtY-PA-VGC" eventType="touchDown" id="jlh-Og-BU2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-QP-AsJ">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-QP-AsJ">
                                 <rect key="frame" x="204" y="293" width="114" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="g0Q-fr-Vjh"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="B. Choice B"/>
+                                <buttonConfiguration key="configuration" style="filled" title="B. Choice B">
+                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="AnswerB:" destination="qtY-PA-VGC" eventType="touchUpInside" id="Ob1-VD-XJG"/>
+                                    <action selector="AnswerB:" destination="qtY-PA-VGC" eventType="touchDown" id="X6H-Yp-Mqj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGK-RY-5bY">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGK-RY-5bY">
                                 <rect key="frame" x="37" y="361" width="100.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100.5" id="Oh3-dP-50V"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="C. Choice C"/>
                                 <connections>
-                                    <action selector="AnswerC:" destination="qtY-PA-VGC" eventType="touchUpInside" id="NiV-rv-GR7"/>
+                                    <action selector="AnswerC:" destination="qtY-PA-VGC" eventType="touchDown" id="F83-sD-vO2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your question ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tC-0i-4V8">
@@ -81,12 +89,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LH-IL-eR5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LH-IL-eR5">
                                 <rect key="frame" x="204" y="361" width="114" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="D. Choice D"/>
                                 <connections>
-                                    <action selector="AnswerD:" destination="qtY-PA-VGC" eventType="touchUpInside" id="mMR-UB-fwN"/>
+                                    <action selector="AnswerD:" destination="qtY-PA-VGC" eventType="touchDown" id="AhH-iG-U7X"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -113,17 +121,17 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ChoiceA" destination="i9H-8e-ygI" id="Zxz-qv-dOs"/>
-                        <outlet property="ChoiceB" destination="3oU-QP-AsJ" id="6pv-Ow-eRK"/>
-                        <outlet property="ChoiceC" destination="XGK-RY-5bY" id="oMM-fp-biI"/>
-                        <outlet property="ChoiceD" destination="4LH-IL-eR5" id="unl-3q-UKS"/>
+                        <outlet property="ChoiceA" destination="i9H-8e-ygI" id="Tpc-V0-D9V"/>
+                        <outlet property="ChoiceB" destination="3oU-QP-AsJ" id="HvQ-ac-o4s"/>
+                        <outlet property="ChoiceC" destination="XGK-RY-5bY" id="t77-Xs-53j"/>
+                        <outlet property="ChoiceD" destination="4LH-IL-eR5" id="IVA-gn-Zu9"/>
                         <outlet property="Question" destination="1tC-0i-4V8" id="naz-UO-deo"/>
-                        <outlet property="Validate" destination="wcP-dN-t75" id="vSV-79-5pB"/>
+                        <outlet property="Validate" destination="wcP-dN-t75" id="jG3-RP-D9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgG-Dn-P0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3409" y="2583"/>
+            <point key="canvasLocation" x="3408.8000000000002" y="2582.1589205397304"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="1hW-Gk-IBx">
@@ -201,7 +209,7 @@
                                     <action selector="ChooseFalse:" destination="w5S-gB-Uod" eventType="touchUpInside" id="zVa-YT-XQO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
                                 <rect key="frame" x="142" y="516" width="90" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SyB-OG-flp"/>
@@ -210,7 +218,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Validate"/>
                                 <connections>
-                                    <action selector="Validate:" destination="w5S-gB-Uod" eventType="touchUpInside" id="N7Z-5e-m50"/>
+                                    <action selector="Validation:" destination="w5S-gB-Uod" eventType="touchDown" id="iw4-hc-zsp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your question ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cX-VE-di2">
@@ -330,6 +338,9 @@
         <image name="return" catalog="system" width="128" height="101"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

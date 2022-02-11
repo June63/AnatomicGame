@@ -30,38 +30,33 @@ class TrueFalse : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         QuestionData()
-        ChooseTrue(True as Any)
-        ChooseFalse(False as Any)
-        //Validation(Validate as Any)
     }
     
-    
-    @IBAction func ChooseTrue(_ sender: Any) {
-        let button = sender as! UIButton
-        responseChoosen = button.tag
+    @IBAction func ChooseTrue(_ sender: UIButton) {
+        responseChoosen = sender.tag
+        True.backgroundColor = UIColor.blue
     }
     
     
     
-    @IBAction func ChooseFalse(_ sender: Any) {
-        let button = sender as! UIButton
-        responseChoosen = button.tag
+    @IBAction func ChooseFalse(_ sender: UIButton) {
+        responseChoosen = sender.tag
+        True.backgroundColor = UIColor.blue
     }
     
-    
-    @IBAction func Validation(_ sender: Any) {
+    @IBAction func Validation(_ sender: UIButton) {
         db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            let response = document!.get("Response") as! String
-            self.db.collection("QCM").document(response).getDocument { (document, error) in
-            let goodRespoonse = response
-                if  String(goodRespoonse) == "responseChoosen" {
+        let response = document!.get("Response") as! String
+            self.db.collection("TrueFalse").document(response).getDocument { (document, error) in
+                /*let goodRespoonse = response.get("Response")
+                if self.responseChoosen.toString() == goodRespoonse {
                     self.alertResponseTrue()
                 } else {
                     self.alertResponseFalse()
-                }
+                }*/
                 DispatchQueue.main.async {
                     self.questionIndex += 1
-                    self.QuestionData()
+                    self.Start()
                 }
             }
         }
@@ -114,12 +109,20 @@ class TrueFalse : UIViewController {
                         while i <= self.arrayOfChoice.count {
                             switch i {
                                 case 0:
-                                    self.True.setTitle(self.arrayOfChoice[0], for: .normal)
-                                    //self.True.setTitle(documents.get("Response") as? String, for: .normal)
+                                    self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
+                                        let choice = choix!.get("Response") as! String
+                                        DispatchQueue.main.async {
+                                        self.True.setTitle(choice, for: .normal)
+                                        }
+                                    }
                                     break
                                 case 1:
-                                    self.False.setTitle(self.arrayOfChoice[1], for: .normal)
-                                    self.False.setTitle(documents.get("Response") as? String, for: .normal)
+                                    self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[1]).getDocument { (choix, error) in
+                                        let choice = choix!.get("Response") as! String
+                                        DispatchQueue.main.async {
+                                        self.False.setTitle(choice, for: .normal)
+                                        }
+                                    }
                                     break
                                 default:
                                     print("Error")
@@ -128,6 +131,9 @@ class TrueFalse : UIViewController {
                         }
                     }
                 }
+                self.ChooseTrue(self.True)
+                self.ChooseFalse(self.False)
+                //self.Validation(self.Validate)
                 }
             } else {
                 print("Document does not exist")
