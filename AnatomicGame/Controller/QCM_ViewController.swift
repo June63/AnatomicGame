@@ -27,7 +27,6 @@ class QCM : UIViewController {
     var arrayOfChoice: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +56,8 @@ class QCM : UIViewController {
     
 
     @IBAction func Validate(_ sender: UIButton) {
-        /*db.collection("QCM").document(questionArray[questionIndex]).getDocument { (document, error) in
-            let response = document.get("Response") as? String
+        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+            /*let response = document.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
                 let goodRespoonse = response.get("Response")
                 if responseChoosen.toString() == goodRespoonse {
@@ -70,14 +69,14 @@ class QCM : UIViewController {
                     questionIndex++
                     Start()
                 }
-            }
+            }*/
         }
-    */}
+    }
     
     
 
     func Start(){
-        arrayOfData = []
+        arrayOfChoice = []
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
                     if let document = document, document.exists {
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
@@ -89,10 +88,10 @@ class QCM : UIViewController {
                             }   }
                         DispatchQueue.main.async {
                             self.Question.text = document.get("Question") as? String
-                            /*var response = document.get("Response") as? String
-                            for response in 0..<(self.arrayOfChoice.count-1) {
+                            
+                            for choice in 0..<(self.arrayOfChoice.count) {
                                 
-                                switch response {
+                                switch choice {
                                         
                                     case 0:
                                         self.ChoiceA.setTitle(self.arrayOfChoice[0], for: .normal)
@@ -114,7 +113,7 @@ class QCM : UIViewController {
                                         print("Error")
                                 }
                                 
-                            }*/
+                            }
                         }
                     } else {
                         print("Document does not exist")

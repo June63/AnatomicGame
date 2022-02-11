@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import CoreMIDI
 
 class TrueFalse : UIViewController {
 
@@ -24,6 +25,7 @@ class TrueFalse : UIViewController {
     var arrayOfChoice: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +48,10 @@ class TrueFalse : UIViewController {
     
     
     @IBAction func Validate(_ sender: UIButton) {
-        /*db.collection("TrueFalse").document(questionArray[questionIndex]).getDocument { (document, error) in
+        /*db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
             let response = document.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
-                let goodRespoonse = response.get("Response") as! String
+            let goodRespoonse = response.get("Response") as! String
                 if responseChoosen.toString() == goodRespoonse {
                     alertResponseTrue()
                 } else {
@@ -60,8 +62,8 @@ class TrueFalse : UIViewController {
                     Start()
                 }
             }
-        }
-    */}
+        }*/
+    }
 
     func Start(){
         arrayOfChoice = []
@@ -77,9 +79,8 @@ class TrueFalse : UIViewController {
                         }
                         DispatchQueue.main.async {
                             self.Question.text = document.get("Question") as? String
-                            /*let response = document.get("Response") as! String
-                            for response in 0..<(self.arrayOfChoice.count-1) {
-                                switch response {
+                            for choice in 0..<(self.arrayOfChoice.count) {
+                                switch choice {
                                     case 0:
                                         self.True.setTitle(self.arrayOfChoice[0], for: .normal)
                                         break
@@ -89,7 +90,7 @@ class TrueFalse : UIViewController {
                                     default:
                                         print("Error")
                                 }
-                            }*/
+                            }
                         }
                         
                     } else {
