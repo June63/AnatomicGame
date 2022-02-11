@@ -134,7 +134,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-nI-X7U">
-                                <rect key="frame" x="122" y="219" width="140" height="60"/>
+                                <rect key="frame" x="126" y="219" width="91" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="WLR-hj-0Cv"/>
                                 </constraints>
@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-CM-oyH">
-                                <rect key="frame" x="143" y="379" width="98" height="60"/>
+                                <rect key="frame" x="143" y="379" width="57" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="abg-D4-26m"/>
                                 </constraints>
@@ -166,8 +166,6 @@
                             <constraint firstItem="ufm-CM-oyH" firstAttribute="leading" secondItem="0cz-8P-TKt" secondAttribute="leading" constant="143" id="3U6-0Z-CEa"/>
                             <constraint firstItem="0cz-8P-TKt" firstAttribute="bottom" secondItem="ufm-CM-oyH" secondAttribute="bottom" constant="179" id="LWy-US-UII"/>
                             <constraint firstItem="WOM-nI-X7U" firstAttribute="centerX" secondItem="ufm-CM-oyH" secondAttribute="centerX" id="Q1k-tT-faE"/>
-                            <constraint firstItem="WOM-nI-X7U" firstAttribute="leading" secondItem="0cz-8P-TKt" secondAttribute="leading" constant="122" id="fvL-jX-TBe"/>
-                            <constraint firstItem="0cz-8P-TKt" firstAttribute="trailing" secondItem="WOM-nI-X7U" secondAttribute="trailing" constant="113" id="pbS-I4-leb"/>
                             <constraint firstItem="WOM-nI-X7U" firstAttribute="top" secondItem="0cz-8P-TKt" secondAttribute="top" constant="175" id="wmq-hA-PDs"/>
                         </constraints>
                     </view>

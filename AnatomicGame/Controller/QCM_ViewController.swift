@@ -62,7 +62,7 @@ class QCM : UIViewController {
 
     @IBAction func Validation(_ sender: Any) {
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            /*let response = document.get("Response") as! String
+            let response = document.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
                 let goodRespoonse = response.get("Response")
                 if responseChoosen.toString() == goodRespoonse {
@@ -74,7 +74,7 @@ class QCM : UIViewController {
                     questionIndex++
                     Start()
                 }
-            }*/
+            }
         }
     }
     
@@ -113,55 +113,65 @@ class QCM : UIViewController {
     
     func Start() {
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            DispatchQueue.main.async {
-                self.Question.text = document!.get("Question") as? String
-                var i = 0
-                while i <= self.arrayOfChoice.count {
-                    switch i {
-                        case 0:
-                            self.ChoiceA.setTitle(self.arrayOfChoice[0], for: .normal)
-                            //self.ChoiceA.setTitle(document!.get("Response") as? String, for: .normal)
-                            break
-                        case 1:
-                            self.ChoiceB.setTitle(self.arrayOfChoice[1], for: .normal)
-                            //self.ChoiceB.setTitle(document!.get("Response") as? String, for: .normal)
-                            break
-                        case 2:
-                            self.ChoiceC.setTitle(self.arrayOfChoice[2], for: .normal)
-                            //self.ChoiceC.setTitle(document!.get("Response") as? String, for: .normal)
-                            break
-                        case 3:
-                            self.ChoiceD.setTitle(self.arrayOfChoice[3], for: .normal)
-                            //self.ChoiceD.setTitle(document!.get("Response") as? String, for: .normal)
-                            break
-                        default:
-                            print("Error")
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
+                for documents in documentSecond!.documents {
+                    print ("\(documents.documentID) => \(documents.data())")
+                    DispatchQueue.main.async {
+                        self.Question.text = document.get("Question") as? String
+                        var i = 0
+                        while i <= self.arrayOfChoice.count {
+                            switch i {
+                                case 0:
+                                    self.ChoiceA.setTitle(self.arrayOfChoice[0], for: .normal)
+                                    //self.ChoiceA.setTitle(documents.get("Response") as? String, for: .normal)
+                                    break
+                                case 1:
+                                    self.ChoiceB.setTitle(self.arrayOfChoice[1], for: .normal)
+                                    //self.ChoiceB.setTitle(documents.get("Response") as? String, for: .normal)
+                                    break
+                                case 2:
+                                    self.ChoiceC.setTitle(self.arrayOfChoice[2], for: .normal)
+                                    //self.ChoiceC.setTitle(documents.get("Response") as? String, for: .normal)
+                                    break
+                                case 3:
+                                    self.ChoiceD.setTitle(self.arrayOfChoice[3], for: .normal)
+                                    //self.ChoiceD.setTitle(documents.get("Response") as? String, for: .normal)
+                                    break
+                                default:
+                                    print("Error")
+                            }
+                            i += 1
                         }
-                    i += 1
+                    }
                 }
+                }
+            } else {
+                print("Document does not exist")
             }
         }
+        
+    }
+
+    func alertResponseFalse() {
+        let alertVC = UIAlertController(title: "Response",
+                                        message: "Mauvaise reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
     }
         
-        
-        
-    func alertResponseFalse() {
-            let alertVC = UIAlertController(title: "Response",
-                                            message: "Mauvaise reponse.",
-                                            preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .destructive)
-            alertVC.addAction(alertAction)
-            self.present(alertVC, animated: true)
-        }
-        
-        func alertResponseTrue() {
-            let alertVC = UIAlertController(title: "Response",
-                                            message: "Bonne reponse.",
-                                            preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .destructive)
-            alertVC.addAction(alertAction)
-            self.present(alertVC, animated: true)
-        }
+    func alertResponseTrue() {
+        let alertVC = UIAlertController(title: "Response",
+                                        message: "Bonne reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
 
 }
 

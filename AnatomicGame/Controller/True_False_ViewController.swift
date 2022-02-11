@@ -50,7 +50,7 @@ class TrueFalse : UIViewController {
     
     
     @IBAction func Validation(_ sender: Any) {
-        /*db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+        db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
             let response = document!.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
             let goodRespoonse = response
@@ -64,7 +64,7 @@ class TrueFalse : UIViewController {
                     self.QuestionData()
                 }
             }
-        }*/
+        }
     }
     
     func QuestionData(){
@@ -102,29 +102,40 @@ class TrueFalse : UIViewController {
     
     func Start() {
         db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            DispatchQueue.main.async {
-                self.Question.text = document!.get("Question") as? String
-                var i = 0
-                while i <= self.arrayOfChoice.count {
-                    switch i {
-                        case 0:
-                            self.True.setTitle(self.arrayOfChoice[0], for: .normal)
-                            //self.True.setTitle(document!.get("Response") as? String, for: .normal)
-                            break
-                        case 1:
-                            self.False.setTitle(self.arrayOfChoice[1], for: .normal)
-                            //self.False.setTitle(document!.get("Response") as? String, for: .normal)
-                            break
-                        default:
-                            print("Error")
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                self.db.collection("TrueFalse").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
+                for documents in documentSecond!.documents {
+                    print ("\(documents.documentID) => \(documents.data())")
+                    DispatchQueue.main.async {
+                        self.Question.text = document.get("Question") as? String
+                        var i = 0
+                        while i <= self.arrayOfChoice.count {
+                            switch i {
+                                case 0:
+                                    self.True.setTitle(self.arrayOfChoice[0], for: .normal)
+                                    //self.True.setTitle(documents.get("Response") as? String, for: .normal)
+                                    break
+                                case 1:
+                                    self.False.setTitle(self.arrayOfChoice[1], for: .normal)
+                                    self.False.setTitle(documents.get("Response") as? String, for: .normal)
+                                    break
+                                default:
+                                    print("Error")
+                            }
+                            i += 1
                         }
-                    i += 1
+                    }
                 }
+                }
+            } else {
+                print("Document does not exist")
             }
         }
-    }
-   
         
+    }
+  
     func alertResponseFalse() {
         let alertVC = UIAlertController(title: "Response",
                                         message: "Mauvaise reponse.",
@@ -133,10 +144,10 @@ class TrueFalse : UIViewController {
         alertVC.addAction(alertAction)
         self.present(alertVC, animated: true)
     }
-    
+        
     func alertResponseTrue() {
         let alertVC = UIAlertController(title: "Response",
-                                        message: "Bonne réponse.",
+                                        message: "Bonne reponse.",
                                         preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .destructive)
         alertVC.addAction(alertAction)
