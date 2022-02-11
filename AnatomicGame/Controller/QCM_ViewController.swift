@@ -45,7 +45,7 @@ class QCM : UIViewController {
     
     @IBAction func AnswerC(_ sender: UIButton) {
         responseChoosen = sender.tag
-        ChoiceC.backgroundColor = UIColor.gree,
+        ChoiceC.backgroundColor = UIColor.green
     }
     
     @IBAction func AnswerD(_ sender: UIButton) {
@@ -57,15 +57,15 @@ class QCM : UIViewController {
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
-                /*let goodRespoonse = response.get("Response")
-                if self.responseChoosen.toString() == goodRespoonse {
+                //let goodResponse = response.get("Response")
+                if String(self.responseChoosen) == response {
                     self.alertResponseTrue()
                 } else {
                     self.alertResponseFalse()
-                }*/
+                }
                 DispatchQueue.main.async {
                     self.questionIndex += 1
-                    self.Start()
+                    self.ResponseData()
                 }
             }
         }
@@ -161,7 +161,7 @@ class QCM : UIViewController {
                 self.AnswerB(self.ChoiceB)
                 self.AnswerC(self.ChoiceC)
                 self.AnswerD(self.ChoiceD)
-                //self.Validation(self.Validate)
+                self.Validation(self.Validate)
             } else {
                 print("Document does not exist")
             }

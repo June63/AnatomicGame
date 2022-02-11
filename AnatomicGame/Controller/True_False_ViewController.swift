@@ -48,15 +48,15 @@ class TrueFalse : UIViewController {
         db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
             self.db.collection("TrueFalse").document(response).getDocument { (document, error) in
-                /*let goodRespoonse = response.get("Response")
-                if self.responseChoosen.toString() == goodRespoonse {
+                //let goodResponse = response.get("Response")
+                if String(self.responseChoosen) == response {
                     self.alertResponseTrue()
                 } else {
                     self.alertResponseFalse()
-                }*/
+                }
                 DispatchQueue.main.async {
                     self.questionIndex += 1
-                    self.Start()
+                    self.ResponseData()()
                 }
             }
         }
@@ -133,7 +133,7 @@ class TrueFalse : UIViewController {
                 }
                 self.ChooseTrue(self.True)
                 self.ChooseFalse(self.False)
-                //self.Validation(self.Validate)
+                self.Validation(self.Validate)
                 }
             } else {
                 print("Document does not exist")
