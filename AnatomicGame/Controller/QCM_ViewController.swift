@@ -30,31 +30,53 @@ class QCM : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        QuestionData()
+        //QuestionData()
     }
-
+    
     @IBAction func AnswerA(_ sender: UIButton) {
-        responseChoosen = sender.tag
-        ChoiceA.backgroundColor = UIColor.green
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            sender.backgroundColor = UIColor.blue
+            responseChoosen = sender.tag
+        } else{
+            sender.backgroundColor = UIColor.green
+        }
     }
     
     @IBAction func AnswerB(_ sender: UIButton) {
-        responseChoosen = sender.tag
-        ChoiceB.backgroundColor = UIColor.green
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            sender.backgroundColor = UIColor.green
+            responseChoosen = sender.tag
+        } else{
+            sender.backgroundColor = UIColor.blue
+        }
     }
     
     @IBAction func AnswerC(_ sender: UIButton) {
-        responseChoosen = sender.tag
-        ChoiceC.backgroundColor = UIColor.green
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            sender.backgroundColor = UIColor.green
+            responseChoosen = sender.tag
+        } else{
+            sender.backgroundColor = UIColor.blue
+        }
     }
     
+    
     @IBAction func AnswerD(_ sender: UIButton) {
-        responseChoosen = sender.tag
-        ChoiceD.backgroundColor = UIColor.green
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            sender.backgroundColor = UIColor.green
+            responseChoosen = sender.tag
+        } else{
+            sender.backgroundColor = UIColor.blue
+        }
     }
-
+    
+    
     @IBAction func Validation(_ sender: UIButton) {
-        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+        /*db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
                 //let goodResponse = response.get("Response")
@@ -68,9 +90,9 @@ class QCM : UIViewController {
                     self.ResponseData()
                 }
             }
-        }
+        }*/
     }
-    
+
     func QuestionData(){
         db.collection("QCM").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -121,7 +143,8 @@ class QCM : UIViewController {
                                     self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
-                                        self.ChoiceA.setTitle(choice, for: .normal)
+                                            self.ChoiceA.setTitle(choice, for: .normal)
+                                            self.AnswerA(self.ChoiceA)
                                         }
                                     }
                                     break
@@ -129,7 +152,8 @@ class QCM : UIViewController {
                                     self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[1]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
-                                        self.ChoiceB.setTitle(choice, for: .normal)
+                                            self.ChoiceB.setTitle(choice, for: .normal)
+                                            self.AnswerB(self.ChoiceB)
                                         }
                                     }
                                     break
@@ -137,7 +161,8 @@ class QCM : UIViewController {
                                     self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[2]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
-                                        self.ChoiceC.setTitle(choice, for: .normal)
+                                            self.ChoiceC.setTitle(choice, for: .normal)
+                                            self.AnswerC(self.ChoiceC)
                                         }
                                     }
                                     break
@@ -145,7 +170,8 @@ class QCM : UIViewController {
                                     self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[3]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
-                                        self.ChoiceD.setTitle(choice, for: .normal)
+                                            self.ChoiceD.setTitle(choice, for: .normal)
+                                            self.AnswerD(self.ChoiceD)
                                         }
                                     }
                                     break
@@ -157,11 +183,9 @@ class QCM : UIViewController {
                     }
                 }
                 }
-                self.AnswerA(self.ChoiceA)
-                self.AnswerB(self.ChoiceB)
-                self.AnswerC(self.ChoiceC)
-                self.AnswerD(self.ChoiceD)
-                self.Validation(self.Validate)
+                DispatchQueue.main.async {
+                    //self.Validation(self.Validate)
+                }
             } else {
                 print("Document does not exist")
             }
@@ -188,5 +212,4 @@ class QCM : UIViewController {
     }
 
 }
-
 

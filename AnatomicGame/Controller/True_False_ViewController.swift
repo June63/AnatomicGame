@@ -32,20 +32,30 @@ class TrueFalse : UIViewController {
         QuestionData()
     }
     
+   
+    
     @IBAction func ChooseTrue(_ sender: UIButton) {
-        responseChoosen = sender.tag
-        True.backgroundColor = UIColor.blue
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            sender.backgroundColor = UIColor.green
+            responseChoosen = sender.tag
+        } else{
+            sender.backgroundColor = UIColor.blue
+        }
     }
     
-    
-    
     @IBAction func ChooseFalse(_ sender: UIButton) {
-        responseChoosen = sender.tag
-        True.backgroundColor = UIColor.blue
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            sender.backgroundColor = UIColor.red
+            responseChoosen = sender.tag
+        } else{
+            sender.backgroundColor = UIColor.blue
+        }
     }
     
     @IBAction func Validation(_ sender: UIButton) {
-        db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+        /*db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
             self.db.collection("TrueFalse").document(response).getDocument { (document, error) in
                 //let goodResponse = response.get("Response")
@@ -56,10 +66,10 @@ class TrueFalse : UIViewController {
                 }
                 DispatchQueue.main.async {
                     self.questionIndex += 1
-                    self.ResponseData()()
+                    self.ResponseData()
                 }
             }
-        }
+        }*/
     }
     
     func QuestionData(){
@@ -112,7 +122,8 @@ class TrueFalse : UIViewController {
                                     self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
-                                        self.True.setTitle(choice, for: .normal)
+                                            self.True.setTitle(choice, for: .normal)
+                                            self.ChooseTrue(self.True)
                                         }
                                     }
                                     break
@@ -120,7 +131,8 @@ class TrueFalse : UIViewController {
                                     self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[1]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
-                                        self.False.setTitle(choice, for: .normal)
+                                            self.False.setTitle(choice, for: .normal)
+                                            self.ChooseFalse(self.False)
                                         }
                                     }
                                     break
@@ -131,9 +143,9 @@ class TrueFalse : UIViewController {
                         }
                     }
                 }
-                self.ChooseTrue(self.True)
-                self.ChooseFalse(self.False)
-                self.Validation(self.Validate)
+                DispatchQueue.main.async {
+                    //self.Validation(self.Validate)
+                }
                 }
             } else {
                 print("Document does not exist")
