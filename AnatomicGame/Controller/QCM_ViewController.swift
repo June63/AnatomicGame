@@ -25,6 +25,7 @@ class QCM : UIViewController {
     let db = Firestore.firestore()
     var arrayOfData: [String] = []
     var arrayOfChoice: [String] = []
+    var arrayOfResponse: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
 
@@ -76,9 +77,9 @@ class QCM : UIViewController {
     
     
     @IBAction func Validation(_ sender: UIButton) {
-        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+        /*db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
-            self.db.collection("QCM").document(response).getDocument { (document, error) in
+            self.db.collection("TrueFalse").document(response).getDocument { (document, error) in
                 //let goodResponse = response.get("Response")
                 if String(self.responseChoosen) == response {
                     self.alertResponseTrue()
@@ -90,7 +91,25 @@ class QCM : UIViewController {
                     self.ResponseData()
                 }
             }
-        }
+        }*/
+    }
+    
+    func ResponseData(){
+        arrayOfResponse = []
+        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                self.db.collection("QCM").document(FIRDocumentReference.documentID).getDocuments { (documentSecond, error) in
+                for documents in documentSecond!.documents {
+                print ("\(documents.documentID) => \(documents.data())")
+                self.arrayOfResponse.append(documents.documentID)
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+         }
     }
 
     func QuestionData(){
@@ -103,11 +122,11 @@ class QCM : UIViewController {
                     self.arrayOfData.append(document.documentID)
                 }
             }
-            self.ResponseData()
+            self.ChoiceData()
         }
     }
     
-    func ResponseData(){
+    func ChoiceData(){
         arrayOfChoice = []
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -184,7 +203,6 @@ class QCM : UIViewController {
                 }
                 }
                 DispatchQueue.main.async {
-                    self.Validation(self.Validate)
                 }
             } else {
                 print("Document does not exist")
