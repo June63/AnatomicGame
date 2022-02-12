@@ -76,7 +76,7 @@ class QCM : UIViewController {
     
     
     @IBAction func Validation(_ sender: UIButton) {
-        /*db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
             self.db.collection("QCM").document(response).getDocument { (document, error) in
                 //let goodResponse = response.get("Response")
@@ -90,7 +90,7 @@ class QCM : UIViewController {
                     self.ResponseData()
                 }
             }
-        }*/
+        }
     }
 
     func QuestionData(){
