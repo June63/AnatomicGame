@@ -55,20 +55,27 @@ class TrueFalse : UIViewController {
     }
     
     @IBAction func Validation(_ sender: UIButton) {
-        db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-        let response = document!.get("Response") as! String
-            self.db.collection("TrueFalse").document(response).getDocument { (document, error) in
-                //let goodResponse = response.get("Response")
-                if String(self.responseChoosen) == response {
+        db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
+        for document in querySnapshot!.documents {
+            self.db.collection("TrueFalse").document(document.documentID).getDocument { (documentSnapshot, error) in
+                let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
+                let bonneReponseID = bonneReponseRef.documentID
+        self.db.collection("QCM").getDocuments { (querySnapshot, error) in
+        for document in querySnapshot!.documents {
+            self.db.collection("TrueFalse").document(document.documentID).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
+                    for choix in choixQuerySnapshot!.documents {
+                        self.arrayOfChoice.append(choix.documentID)
+                        }
+                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
                     self.alertResponseTrue()
                 } else {
-                    self.alertResponseFalse()
-                }
-                DispatchQueue.main.async {
-                    self.questionIndex += 1
-                    self.ResponseData()
+                self.alertResponseFalse()
                 }
             }
+        }
+        }
+            }
+        }
         }
     }
     
@@ -144,7 +151,7 @@ class TrueFalse : UIViewController {
                     }
                 }
                 DispatchQueue.main.async {
-                    //self.Validation(self.Validate)
+                    self.Validation(self.Validate)
                 }
                 }
             } else {
