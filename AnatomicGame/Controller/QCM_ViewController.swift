@@ -30,7 +30,7 @@ class QCM : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //QuestionData()
+        QuestionData()
     }
     
     @IBAction func AnswerA(_ sender: UIButton) {
@@ -184,7 +184,7 @@ class QCM : UIViewController {
                 }
                 }
                 DispatchQueue.main.async {
-                    //self.Validation(self.Validate)
+                    self.Validation(self.Validate)
                 }
             } else {
                 print("Document does not exist")
