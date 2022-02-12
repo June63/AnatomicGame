@@ -55,7 +55,7 @@ class TrueFalse : UIViewController {
     }
     
     @IBAction func Validation(_ sender: UIButton) {
-        /*db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
+        db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
         let response = document!.get("Response") as! String
             self.db.collection("TrueFalse").document(response).getDocument { (document, error) in
                 //let goodResponse = response.get("Response")
@@ -69,7 +69,7 @@ class TrueFalse : UIViewController {
                     self.ResponseData()
                 }
             }
-        }*/
+        }
     }
     
     func QuestionData(){
