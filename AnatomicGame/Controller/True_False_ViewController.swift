@@ -32,25 +32,36 @@ class TrueFalse : UIViewController {
         QuestionData()
     }
     
+    
+    @IBAction func DidTapButton(_ sender: UIButton) {
+        sender.isSelected = true
+        True.isSelected = false
+        False.isSelected = false
+    }
+    
+    
    
     
     @IBAction func ChooseTrue(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected{
-            sender.backgroundColor = UIColor.green
-            responseChoosen = sender.tag
-        } else{
-            sender.backgroundColor = UIColor.blue
+        if True.isSelected == false {
+            responseChoosen = 0
+            True.backgroundColor = UIColor.green
+            print("True")
+        } else {
+            True.backgroundColor = UIColor.blue
+            print("KO")
+            True.isSelected = false
         }
     }
     
     @IBAction func ChooseFalse(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected{
-            sender.backgroundColor = UIColor.red
-            responseChoosen = sender.tag
-        } else{
-            sender.backgroundColor = UIColor.blue
+        if False.isSelected == false {
+            responseChoosen = 1
+            False.backgroundColor = UIColor.green
+            print("False")
+        } else {
+            False.backgroundColor = UIColor.blue
+            print("KO")
         }
     }
     
@@ -89,11 +100,11 @@ class TrueFalse : UIViewController {
                     self.arrayOfData.append(document.documentID)
                 }
             }
-        self.ResponseData()
+        self.Start()
         }
     }
     
-    func ResponseData(){
+    func Start(){
         arrayOfChoice = []
         db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -103,27 +114,10 @@ class TrueFalse : UIViewController {
                 for documents in documentSecond!.documents {
                     print ("\(documents.documentID) => \(documents.data())")
                     self.arrayOfChoice.append(documents.documentID)
-                    }
-                self.Start()
-                }
-                } else {
-                    print("Document does not exist")
-                }
-        }
-    }
-    
-    func Start() {
-        db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-                self.db.collection("TrueFalse").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
-                for documents in documentSecond!.documents {
-                    print ("\(documents.documentID) => \(documents.data())")
                     DispatchQueue.main.async {
                         self.Question.text = document.get("Question") as? String
                         var i = 0
-                        while i <= self.arrayOfChoice.count {
+                        while i < self.arrayOfChoice.count {
                             switch i {
                                 case 0:
                                     self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
@@ -145,22 +139,24 @@ class TrueFalse : UIViewController {
                                     break
                                 default:
                                     print("Error")
+                                }
+                                i += 1
                             }
-                            i += 1
                         }
                     }
-                }
-                DispatchQueue.main.async {
-                    self.Validation(self.Validate)
-                }
+                    DispatchQueue.main.async {
+                        self.DidTapButton(self.True)
+                        self.DidTapButton(self.False)
+                        self.Validation(self.Validate)
+                    }
+                    
                 }
             } else {
                 print("Document does not exist")
             }
         }
-        
     }
-  
+                
     func alertResponseFalse() {
         let alertVC = UIAlertController(title: "Response",
                                         message: "Mauvaise reponse.",

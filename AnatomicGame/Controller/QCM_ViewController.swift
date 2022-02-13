@@ -12,8 +12,9 @@ import FirebaseFirestore
 class QCM : UIViewController {
 
     // MARK: Outlet
-    
+
     @IBOutlet weak var Question: UILabel!
+    
     @IBOutlet weak var ChoiceA: UIButton!
     @IBOutlet weak var ChoiceB: UIButton!
     @IBOutlet weak var ChoiceC: UIButton!
@@ -28,67 +29,89 @@ class QCM : UIViewController {
     var arrayOfResponse: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         QuestionData()
     }
     
+    @IBAction func DidTapButton(_ sender: UIButton) {
+        sender.isSelected = true
+        ChoiceA.isSelected = false
+        ChoiceB.isSelected = false
+        ChoiceC.isSelected = false
+        ChoiceD.isSelected = false
+    }
+
     @IBAction func AnswerA(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected{
-            sender.backgroundColor = UIColor.blue
-            responseChoosen = sender.tag
-        } else{
-            sender.backgroundColor = UIColor.green
+            
+        if ChoiceA.isSelected == false {
+            responseChoosen = 0
+            ChoiceA.backgroundColor = UIColor.green
+            print("A")
+        } else {
+            ChoiceA.backgroundColor = UIColor.blue
+            print("ko")
         }
+       
     }
     
     @IBAction func AnswerB(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected{
-            sender.backgroundColor = UIColor.green
-            responseChoosen = sender.tag
-        } else{
-            sender.backgroundColor = UIColor.blue
+        
+        if ChoiceB.isSelected == false {
+            responseChoosen = 1
+            ChoiceB.backgroundColor = UIColor.green
+            print("B")
+        } else {
+            ChoiceB.backgroundColor = UIColor.blue
+            print("ko")
+            ChoiceB.isSelected = false
         }
+   
     }
     
     @IBAction func AnswerC(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected{
-            sender.backgroundColor = UIColor.green
-            responseChoosen = sender.tag
-        } else{
-            sender.backgroundColor = UIColor.blue
+        
+        if ChoiceC.isSelected == false {
+            responseChoosen = 2
+            ChoiceC.backgroundColor = UIColor.green
+            print("C")
+        } else {
+            ChoiceC.backgroundColor = UIColor.blue
+            print("ko")
+            ChoiceC.isSelected = false
         }
     }
-    
     
     @IBAction func AnswerD(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected{
-            sender.backgroundColor = UIColor.green
-            responseChoosen = sender.tag
-        } else{
-            sender.backgroundColor = UIColor.blue
+        
+        if ChoiceD.isSelected == false {
+            responseChoosen = 3
+            ChoiceD.backgroundColor = UIColor.green
+            print("D")
+        } else {
+            ChoiceD.backgroundColor = UIColor.blue
+            print("ko")
+            ChoiceB.isSelected = false
         }
     }
-    
     
     @IBAction func Validation(_ sender: UIButton) {
         db.collection("QCM").getDocuments { (querySnapshot, error) in
         for document in querySnapshot!.documents {
             self.db.collection("QCM").document(document.documentID).getDocument { (documentSnapshot, error) in
                 let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
+                print(bonneReponseRef as DocumentReference)
                 let bonneReponseID = bonneReponseRef.documentID
+                //print(bonneReponseID)
         self.db.collection("QCM").getDocuments { (querySnapshot, error) in
         for document in querySnapshot!.documents {
             self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
                     for choix in choixQuerySnapshot!.documents {
                         self.arrayOfChoice.append(choix.documentID)
-                        }
-                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
+                    }
+                //print(self.responseChoosen)
+               if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
                     self.alertResponseTrue()
                 } else {
                 self.alertResponseFalse()
@@ -100,7 +123,7 @@ class QCM : UIViewController {
         }
         }
     }
-   
+    
     func QuestionData(){
         db.collection("QCM").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -111,11 +134,11 @@ class QCM : UIViewController {
                     self.arrayOfData.append(document.documentID)
                 }
             }
-            self.ChoiceData()
+            self.Start()
         }
     }
     
-    func ChoiceData(){
+    func Start(){
         arrayOfChoice = []
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -125,34 +148,16 @@ class QCM : UIViewController {
                 for documents in documentSecond!.documents {
                 print ("\(documents.documentID) => \(documents.data())")
                 self.arrayOfChoice.append(documents.documentID)
-                    }
-                self.Start()
-                }
-            } else {
-                print("Document does not exist")
-            }
-         }
-    }
-    
-    func Start() {
-        db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-                self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
-                for documents in documentSecond!.documents {
-                    print ("\(documents.documentID) => \(documents.data())")
                     DispatchQueue.main.async {
                         self.Question.text = document.get("Question") as? String
                         var i = 0
-                        while i <= self.arrayOfChoice.count {
+                        while i < self.arrayOfChoice.count {
                             switch i {
                                 case 0:
                                     self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceA.setTitle(choice, for: .normal)
-                                            self.AnswerA(self.ChoiceA)
                                         }
                                     }
                                     break
@@ -161,7 +166,6 @@ class QCM : UIViewController {
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceB.setTitle(choice, for: .normal)
-                                            self.AnswerB(self.ChoiceB)
                                         }
                                     }
                                     break
@@ -170,7 +174,7 @@ class QCM : UIViewController {
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceC.setTitle(choice, for: .normal)
-                                            self.AnswerC(self.ChoiceC)
+                                            
                                         }
                                     }
                                     break
@@ -179,7 +183,6 @@ class QCM : UIViewController {
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceD.setTitle(choice, for: .normal)
-                                            self.AnswerD(self.ChoiceD)
                                         }
                                     }
                                     break
@@ -190,15 +193,18 @@ class QCM : UIViewController {
                         }
                     }
                 }
+                    DispatchQueue.main.async {
+                        self.DidTapButton(self.ChoiceA)
+                        self.DidTapButton(self.ChoiceB)
+                        self.DidTapButton(self.ChoiceC)
+                        self.DidTapButton(self.ChoiceD)
+                        self.Validation(self.Validate)
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.Validation(self.Validate)
-                }
-            } else {
+                }else {
                 print("Document does not exist")
             }
-        }
-        
+         }
     }
 
     func alertResponseFalse() {
@@ -220,4 +226,3 @@ class QCM : UIViewController {
     }
 
 }
-
