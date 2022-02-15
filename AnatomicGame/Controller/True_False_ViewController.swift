@@ -37,6 +37,7 @@ class TrueFalse : UIViewController {
         sender.isSelected = true
         True.isSelected = false
         False.isSelected = false
+        Validate.isSelected = false
     }
     
     
@@ -47,6 +48,7 @@ class TrueFalse : UIViewController {
             responseChoosen = 0
             True.backgroundColor = UIColor.green
             print("True")
+            DidTapButton(Validate)
         } else {
             True.backgroundColor = UIColor.blue
             print("KO")
@@ -59,6 +61,7 @@ class TrueFalse : UIViewController {
             responseChoosen = 1
             False.backgroundColor = UIColor.green
             print("False")
+            DidTapButton(Validate)
         } else {
             False.backgroundColor = UIColor.blue
             print("KO")
@@ -67,8 +70,8 @@ class TrueFalse : UIViewController {
     
     @IBAction func Validation(_ sender: UIButton) {
         db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
-        for document in querySnapshot!.documents {
-            self.db.collection("TrueFalse").document(document.documentID).getDocument { (documentSnapshot, error) in
+            for _ in querySnapshot!.documents {
+            self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
                 let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
                 let bonneReponseID = bonneReponseRef.documentID
         self.db.collection("QCM").getDocuments { (querySnapshot, error) in
@@ -77,16 +80,20 @@ class TrueFalse : UIViewController {
                     for choix in choixQuerySnapshot!.documents {
                         self.arrayOfChoice.append(choix.documentID)
                         }
+            }
+        }
+        }
                 if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
                     self.alertResponseTrue()
                 } else {
-                self.alertResponseFalse()
+                    self.alertResponseFalse()
                 }
             }
         }
-        }
-            }
-        }
+            /*DispatchQueue.main.async {
+                self.questionIndex += 1
+                self.Start()
+            }*/
         }
     }
     

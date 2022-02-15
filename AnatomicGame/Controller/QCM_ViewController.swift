@@ -41,6 +41,7 @@ class QCM : UIViewController {
         ChoiceB.isSelected = false
         ChoiceC.isSelected = false
         ChoiceD.isSelected = false
+        Validate.isSelected = false
     }
 
     @IBAction func AnswerA(_ sender: UIButton) {
@@ -48,6 +49,7 @@ class QCM : UIViewController {
         if ChoiceA.isSelected == false {
             responseChoosen = 0
             ChoiceA.backgroundColor = UIColor.green
+            DidTapButton(Validate)
             print("A")
         } else {
             ChoiceA.backgroundColor = UIColor.blue
@@ -61,11 +63,11 @@ class QCM : UIViewController {
         if ChoiceB.isSelected == false {
             responseChoosen = 1
             ChoiceB.backgroundColor = UIColor.green
+            DidTapButton(Validate)
             print("B")
         } else {
             ChoiceB.backgroundColor = UIColor.blue
             print("ko")
-            ChoiceB.isSelected = false
         }
    
     }
@@ -76,10 +78,10 @@ class QCM : UIViewController {
             responseChoosen = 2
             ChoiceC.backgroundColor = UIColor.green
             print("C")
+            DidTapButton(Validate)
         } else {
             ChoiceC.backgroundColor = UIColor.blue
             print("ko")
-            ChoiceC.isSelected = false
         }
     }
     
@@ -88,39 +90,42 @@ class QCM : UIViewController {
         if ChoiceD.isSelected == false {
             responseChoosen = 3
             ChoiceD.backgroundColor = UIColor.green
+            DidTapButton(Validate)
             print("D")
         } else {
             ChoiceD.backgroundColor = UIColor.blue
             print("ko")
-            ChoiceB.isSelected = false
         }
     }
     
     @IBAction func Validation(_ sender: UIButton) {
+
         db.collection("QCM").getDocuments { (querySnapshot, error) in
-        for document in querySnapshot!.documents {
-            self.db.collection("QCM").document(document.documentID).getDocument { (documentSnapshot, error) in
-                let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
-                print(bonneReponseRef as DocumentReference)
+            for _ in querySnapshot!.documents {
+            self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
+                let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
                 let bonneReponseID = bonneReponseRef.documentID
-                //print(bonneReponseID)
         self.db.collection("QCM").getDocuments { (querySnapshot, error) in
         for document in querySnapshot!.documents {
             self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
                     for choix in choixQuerySnapshot!.documents {
                         self.arrayOfChoice.append(choix.documentID)
                     }
-                //print(self.responseChoosen)
-               if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
+            }
+        }
+        }
+                print(self.responseChoosen)
+                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
                     self.alertResponseTrue()
                 } else {
-                self.alertResponseFalse()
+                    self.alertResponseFalse()
                 }
             }
         }
-        }
-            }
-        }
+            /*DispatchQueue.main.async {
+                self.questionIndex += 1
+                self.Start()
+            }*/
         }
     }
     
@@ -198,7 +203,6 @@ class QCM : UIViewController {
                         self.DidTapButton(self.ChoiceB)
                         self.DidTapButton(self.ChoiceC)
                         self.DidTapButton(self.ChoiceD)
-                        self.Validation(self.Validate)
                     }
                 }
                 }else {
