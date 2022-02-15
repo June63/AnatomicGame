@@ -40,9 +40,6 @@ class TrueFalse : UIViewController {
         Validate.isSelected = false
     }
     
-    
-   
-    
     @IBAction func ChooseTrue(_ sender: UIButton) {
         if True.isSelected == false {
             responseChoosen = 0
@@ -118,9 +115,11 @@ class TrueFalse : UIViewController {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 print("Document data: \(dataDescription)")
                 self.db.collection("TrueFalse").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
-                for documents in documentSecond!.documents {
-                    print ("\(documents.documentID) => \(documents.data())")
-                    self.arrayOfChoice.append(documents.documentID)
+                    for documents in documentSecond!.documents {
+                        print ("\(documents.documentID) => \(documents.data())")
+                        self.arrayOfChoice.append(documents.documentID)
+                    }
+                
                     DispatchQueue.main.async {
                         self.Question.text = document.get("Question") as? String
                         var i = 0
@@ -146,18 +145,17 @@ class TrueFalse : UIViewController {
                                     break
                                 default:
                                     print("Error")
-                                }
-                                i += 1
                             }
+                            i += 1
                         }
                     }
+                    
+                }
                     DispatchQueue.main.async {
                         self.DidTapButton(self.True)
                         self.DidTapButton(self.False)
                         self.Validation(self.Validate)
                     }
-                    
-                }
             } else {
                 print("Document does not exist")
             }

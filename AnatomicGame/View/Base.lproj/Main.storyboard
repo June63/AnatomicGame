@@ -43,7 +43,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="A. ChoiceA"/>
                                 <connections>
                                     <action selector="AnswerA:" destination="NO2-rA-uRL" eventType="touchUpInside" id="Mfl-mz-du7"/>
-                                    <action selector="DidTapButton:" destination="NO2-rA-uRL" eventType="touchUpInside" id="0mp-Tj-e3u"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-sD-9Ex">
@@ -52,7 +51,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="B. ChoiceB"/>
                                 <connections>
                                     <action selector="AnswerB:" destination="NO2-rA-uRL" eventType="touchUpInside" id="bRF-aU-EK6"/>
-                                    <action selector="DidTapButton:" destination="NO2-rA-uRL" eventType="touchUpInside" id="4hW-cx-W5q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9B-bQ-WyP">
@@ -61,7 +59,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="C. ChoiceC"/>
                                 <connections>
                                     <action selector="AnswerC:" destination="NO2-rA-uRL" eventType="touchUpInside" id="QQ8-Bk-zfI"/>
-                                    <action selector="DidTapButton:" destination="NO2-rA-uRL" eventType="touchUpInside" id="aU4-Tm-XaN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhm-Pq-Q1Y">
@@ -81,7 +78,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="D. ChoiceD"/>
                                 <connections>
                                     <action selector="AnswerD:" destination="NO2-rA-uRL" eventType="touchUpInside" id="no4-cA-f6C"/>
-                                    <action selector="DidTapButton:" destination="NO2-rA-uRL" eventType="touchUpInside" id="awn-YF-kFT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your Question ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqx-sh-xQW">
@@ -190,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-Ic-2K8">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-Ic-2K8">
                                 <rect key="frame" x="228" y="366" width="75" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="H0I-Wj-XS4"/>
@@ -203,10 +199,9 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="ChooseFalse:" destination="w5S-gB-Uod" eventType="touchUpInside" id="zVa-YT-XQO"/>
-                                    <action selector="DidTapButton:" destination="w5S-gB-Uod" eventType="touchUpInside" id="XTr-eU-e5r"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
                                 <rect key="frame" x="142" y="516" width="90" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SyB-OG-flp"/>
@@ -218,7 +213,7 @@
                                     <action selector="Validation:" destination="w5S-gB-Uod" eventType="touchDown" id="iw4-hc-zsp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM1-MT-VTh">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM1-MT-VTh">
                                 <rect key="frame" x="53" y="366" width="70" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nM1-MT-VTh" secondAttribute="height" multiplier="80:61" constant="17.540983606557383" id="HXG-Um-UsJ"/>
@@ -231,7 +226,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="ChooseTrue:" destination="w5S-gB-Uod" eventType="touchUpInside" id="GLu-6x-NaI"/>
-                                    <action selector="DidTapButton:" destination="w5S-gB-Uod" eventType="touchUpInside" id="7Pj-k4-Fnl"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask your question ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cX-VE-di2">

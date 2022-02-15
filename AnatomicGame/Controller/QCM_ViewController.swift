@@ -14,7 +14,6 @@ class QCM : UIViewController {
     // MARK: Outlet
 
     @IBOutlet weak var Question: UILabel!
-    
     @IBOutlet weak var ChoiceA: UIButton!
     @IBOutlet weak var ChoiceB: UIButton!
     @IBOutlet weak var ChoiceC: UIButton!
@@ -26,7 +25,6 @@ class QCM : UIViewController {
     let db = Firestore.firestore()
     var arrayOfData: [String] = []
     var arrayOfChoice: [String] = []
-    var arrayOfResponse: [String] = []
     var questionIndex = 0
     var responseChoosen = -1
     
@@ -35,73 +33,34 @@ class QCM : UIViewController {
         QuestionData()
     }
     
-    @IBAction func DidTapButton(_ sender: UIButton) {
-        sender.isSelected = true
-        ChoiceA.isSelected = false
-        ChoiceB.isSelected = false
-        ChoiceC.isSelected = false
-        ChoiceD.isSelected = false
-        Validate.isSelected = false
-    }
-
     @IBAction func AnswerA(_ sender: UIButton) {
-            
-        if ChoiceA.isSelected == false {
-            responseChoosen = 0
-            ChoiceA.backgroundColor = UIColor.green
-            DidTapButton(Validate)
-            print("A")
-        } else {
-            ChoiceA.backgroundColor = UIColor.blue
-            print("ko")
-        }
-       
+        responseChoosen = 0
+        print("A")
     }
     
     @IBAction func AnswerB(_ sender: UIButton) {
-        
-        if ChoiceB.isSelected == false {
-            responseChoosen = 1
-            ChoiceB.backgroundColor = UIColor.green
-            DidTapButton(Validate)
-            print("B")
-        } else {
-            ChoiceB.backgroundColor = UIColor.blue
-            print("ko")
-        }
-   
+        responseChoosen = 1
+        print("B")
     }
     
     @IBAction func AnswerC(_ sender: UIButton) {
-        
-        if ChoiceC.isSelected == false {
-            responseChoosen = 2
-            ChoiceC.backgroundColor = UIColor.green
-            print("C")
-            DidTapButton(Validate)
-        } else {
-            ChoiceC.backgroundColor = UIColor.blue
-            print("ko")
-        }
+        responseChoosen = 2
+        print("C")
     }
     
     @IBAction func AnswerD(_ sender: UIButton) {
-        
-        if ChoiceD.isSelected == false {
-            responseChoosen = 3
-            ChoiceD.backgroundColor = UIColor.green
-            DidTapButton(Validate)
-            print("D")
-        } else {
-            ChoiceD.backgroundColor = UIColor.blue
-            print("ko")
-        }
+        responseChoosen = 0
+        print("D")
     }
     
     @IBAction func Validation(_ sender: UIButton) {
-
+        
+        ChoiceA.isEnabled = false
+        ChoiceB.isEnabled = false
+        ChoiceC.isEnabled = false
+        ChoiceD.isEnabled = false
+        
         db.collection("QCM").getDocuments { (querySnapshot, error) in
-            for _ in querySnapshot!.documents {
             self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
                 let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
                 let bonneReponseID = bonneReponseRef.documentID
@@ -114,19 +73,25 @@ class QCM : UIViewController {
             }
         }
         }
-                print(self.responseChoosen)
                 if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
                     self.alertResponseTrue()
+                    DispatchQueue.main.async {
+                        self.Validate.isEnabled = false
+                        self.questionIndex += 1
+                        self.Start()
+                    }
                 } else {
                     self.alertResponseFalse()
+                    DispatchQueue.main.async {
+                        self.Validate.isEnabled = false
+                        self.questionIndex += 1
+                        self.Start()
+                    }
                 }
+                
             }
         }
-            /*DispatchQueue.main.async {
-                self.questionIndex += 1
-                self.Start()
-            }*/
-        }
+            
     }
     
     func QuestionData(){
@@ -150,9 +115,10 @@ class QCM : UIViewController {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 print("Document data: \(dataDescription)")
                 self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (documentSecond, error) in
-                for documents in documentSecond!.documents {
-                print ("\(documents.documentID) => \(documents.data())")
-                self.arrayOfChoice.append(documents.documentID)
+                    for documents in documentSecond!.documents {
+                        print ("\(documents.documentID) => \(documents.data())")
+                        self.arrayOfChoice.append(documents.documentID)
+                    }
                     DispatchQueue.main.async {
                         self.Question.text = document.get("Question") as? String
                         var i = 0
@@ -179,7 +145,6 @@ class QCM : UIViewController {
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceC.setTitle(choice, for: .normal)
-                                            
                                         }
                                     }
                                     break
@@ -198,14 +163,7 @@ class QCM : UIViewController {
                         }
                     }
                 }
-                    DispatchQueue.main.async {
-                        self.DidTapButton(self.ChoiceA)
-                        self.DidTapButton(self.ChoiceB)
-                        self.DidTapButton(self.ChoiceC)
-                        self.DidTapButton(self.ChoiceD)
-                    }
-                }
-                }else {
+            }else {
                 print("Document does not exist")
             }
          }
