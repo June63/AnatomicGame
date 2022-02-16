@@ -49,49 +49,51 @@ class QCM : UIViewController {
     }
     
     @IBAction func AnswerD(_ sender: UIButton) {
-        responseChoosen = 0
+        responseChoosen = 3
         print("D")
     }
     
     @IBAction func Validation(_ sender: UIButton) {
-        
         ChoiceA.isEnabled = false
         ChoiceB.isEnabled = false
         ChoiceC.isEnabled = false
         ChoiceD.isEnabled = false
-        
         db.collection("QCM").getDocuments { (querySnapshot, error) in
             self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
                 let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
                 let bonneReponseID = bonneReponseRef.documentID
-        self.db.collection("QCM").getDocuments { (querySnapshot, error) in
-        for document in querySnapshot!.documents {
-            self.db.collection("QCM").document(document.documentID).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
-                    for choix in choixQuerySnapshot!.documents {
-                        self.arrayOfChoice.append(choix.documentID)
+            self.db.collection("QCM").getDocuments { (querySnapshot, error) in
+                for _ in querySnapshot!.documents {
+                    self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
+                            for choix in choixQuerySnapshot!.documents {
+                                self.arrayOfChoice.append(choix.documentID)
+                            }
                     }
+                }
             }
-        }
-        }
                 if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
                     self.alertResponseTrue()
+                    self.ChoiceA.isEnabled = true
+                    self.ChoiceB.isEnabled = true
+                    self.ChoiceC.isEnabled = true
+                    self.ChoiceD.isEnabled = true
                     DispatchQueue.main.async {
-                        self.Validate.isEnabled = false
                         self.questionIndex += 1
                         self.Start()
                     }
                 } else {
                     self.alertResponseFalse()
+                    self.ChoiceA.isEnabled = true
+                    self.ChoiceB.isEnabled = true
+                    self.ChoiceC.isEnabled = true
+                    self.ChoiceD.isEnabled = true
                     DispatchQueue.main.async {
-                        self.Validate.isEnabled = false
                         self.questionIndex += 1
                         self.Start()
                     }
                 }
-                
             }
         }
-            
     }
     
     func QuestionData(){
@@ -158,6 +160,7 @@ class QCM : UIViewController {
                                     break
                                 default:
                                     print("Error")
+                                    break
                             }
                             i += 1
                         }

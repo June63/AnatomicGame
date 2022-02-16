@@ -66,31 +66,44 @@ class TrueFalse : UIViewController {
     }
     
     @IBAction func Validation(_ sender: UIButton) {
+        True.isEnabled = false
+        False.isEnabled = false
         db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
             for _ in querySnapshot!.documents {
-            self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
-                let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
-                let bonneReponseID = bonneReponseRef.documentID
-        self.db.collection("QCM").getDocuments { (querySnapshot, error) in
-        for document in querySnapshot!.documents {
-            self.db.collection("TrueFalse").document(document.documentID).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
-                    for choix in choixQuerySnapshot!.documents {
-                        self.arrayOfChoice.append(choix.documentID)
+                self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
+                    let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
+                    let bonneReponseID = bonneReponseRef.documentID
+                self.db.collection("QCM").getDocuments { (querySnapshot, error) in
+                    for _ in querySnapshot!.documents {
+                        self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments {    (choixQuerySnapshot, error) in
+                            for choix in choixQuerySnapshot!.documents {
+                                self.arrayOfChoice.append(choix.documentID)
+                            }
                         }
-            }
-        }
-        }
-                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
-                    self.alertResponseTrue()
-                } else {
-                    self.alertResponseFalse()
+                    }
                 }
+                    if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
+                        self.alertResponseTrue()
+                        self.True.isEnabled = true
+                        self.False.isEnabled = true
+                        DispatchQueue.main.async {
+                            self.questionIndex += 1
+                            self.Start()
+                        }
+                    } else {
+                        self.alertResponseFalse()
+                        self.True.isEnabled = true
+                        self.False.isEnabled = true
+                        DispatchQueue.main.async {
+                            self.questionIndex += 1
+                            self.Start()
+                        }
+                    }
+                    
+                }
+                
             }
-        }
-            /*DispatchQueue.main.async {
-                self.questionIndex += 1
-                self.Start()
-            }*/
+            
         }
     }
     
@@ -119,7 +132,6 @@ class TrueFalse : UIViewController {
                         print ("\(documents.documentID) => \(documents.data())")
                         self.arrayOfChoice.append(documents.documentID)
                     }
-                
                     DispatchQueue.main.async {
                         self.Question.text = document.get("Question") as? String
                         var i = 0
