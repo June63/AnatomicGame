@@ -29,7 +29,7 @@ class TrueFalse : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        QuestionData()
+        loadData()
     }
     
     @IBAction func ChooseTrue(_ sender: UIButton) {
@@ -50,13 +50,14 @@ class TrueFalse : UIViewController {
         print("False")
     }
     
+    // Valide your choice and continue the game
     @IBAction func Validation(_ sender: UIButton) {
         True.isEnabled = false
         False.isEnabled = false
         db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
             self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
-                let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
-                let bonneReponseID = bonneReponseRef.documentID
+                let goodResponseRef = documentSnapshot!.get("Response") as! DocumentReference
+                let goodResponseID = goodResponseRef.documentID
             self.db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
                 self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
                     for choix in choixQuerySnapshot!.documents {
@@ -64,7 +65,7 @@ class TrueFalse : UIViewController {
                     }
                 }
             }
-                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
+                if (self.arrayOfChoice[self.responseChoosen] == goodResponseID) {
                     DispatchQueue.main.async {
                         self.alertResponseTrue()
                         self.True.isEnabled = true
@@ -73,6 +74,7 @@ class TrueFalse : UIViewController {
                             self.questionIndex += 1
                             self.Start()
                         }else {
+                            print("End")
                             self.alertEndGame()
                         }
                     }
@@ -84,6 +86,7 @@ class TrueFalse : UIViewController {
                             self.questionIndex += 1
                             self.Start()
                         } else {
+                            print("End")
                             self.alertEndGame()
                         }
                     }
@@ -92,7 +95,8 @@ class TrueFalse : UIViewController {
         }
     }
     
-    func QuestionData(){
+    //load data from firebase into an array
+    func loadData(){
         db.collection("TrueFalse").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -106,6 +110,7 @@ class TrueFalse : UIViewController {
         }
     }
     
+    // play to TrueFalseGame
     func Start(){
         arrayOfChoice = []
         db.collection("TrueFalse").document(arrayOfData[questionIndex]).getDocument { (document, error) in
@@ -118,7 +123,7 @@ class TrueFalse : UIViewController {
                         self.arrayOfChoice.append(documents.documentID)
                     }
                     self.Question.text = document.get("Question") as? String
-                    for index in 0...self.arrayOfChoice.count{
+                    for index in 0...self.arrayOfChoice.count-1{
                             switch index {
                                 case 0:
                                     self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in

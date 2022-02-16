@@ -30,7 +30,7 @@ class QCM : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        QuestionData()
+        loadData()
     }
     
     @IBAction func AnswerA(_ sender: UIButton) {
@@ -77,6 +77,7 @@ class QCM : UIViewController {
         print("D")
     }
     
+    // Valide your choice and continue the game
     @IBAction func Validation(_ sender: UIButton) {
         ChoiceA.isEnabled = false
         ChoiceB.isEnabled = false
@@ -84,8 +85,8 @@ class QCM : UIViewController {
         ChoiceD.isEnabled = false
         db.collection("QCM").getDocuments { (querySnapshot, error) in
             self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
-                let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
-                let bonneReponseID = bonneReponseRef.documentID
+                let goodResponseRef = documentSnapshot!.get("Response") as! DocumentReference
+                let goodResponseID = goodResponseRef.documentID
             self.db.collection("QCM").getDocuments { (querySnapshot, error) in
                 self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
                     for choix in choixQuerySnapshot!.documents {
@@ -93,7 +94,7 @@ class QCM : UIViewController {
                     }
                 }
             }
-                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
+                if (self.arrayOfChoice[self.responseChoosen] == goodResponseID) {
                     DispatchQueue.main.async {
                         self.alertResponseTrue()
                         self.ChoiceA.isEnabled = true
@@ -104,6 +105,7 @@ class QCM : UIViewController {
                             self.questionIndex += 1
                             self.Start()
                         }else {
+                            print("End")
                             self.alertEndGame()
                         }
                     }
@@ -117,6 +119,7 @@ class QCM : UIViewController {
                             self.questionIndex += 1
                             self.Start()
                         } else {
+                            print("End")
                             self.alertEndGame()
                         }
                     }
@@ -125,7 +128,8 @@ class QCM : UIViewController {
         }
     }
     
-    func QuestionData(){
+    //load data from firebase into an array
+    func loadData(){
         db.collection("QCM").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -139,6 +143,7 @@ class QCM : UIViewController {
         }
     }
     
+    // play to QCMGame
     func Start(){
         arrayOfChoice = []
         db.collection("QCM").document(arrayOfData[questionIndex]).getDocument { (document, error) in
