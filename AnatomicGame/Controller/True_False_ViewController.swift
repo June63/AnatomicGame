@@ -32,78 +32,48 @@ class TrueFalse : UIViewController {
         QuestionData()
     }
     
-    
-    @IBAction func DidTapButton(_ sender: UIButton) {
-        sender.isSelected = true
-        True.isSelected = false
-        False.isSelected = false
-        Validate.isSelected = false
-    }
-    
     @IBAction func ChooseTrue(_ sender: UIButton) {
-        if True.isSelected == false {
-            responseChoosen = 0
-            True.backgroundColor = UIColor.green
-            print("True")
-            DidTapButton(Validate)
-        } else {
-            True.backgroundColor = UIColor.blue
-            print("KO")
-            True.isSelected = false
-        }
+        responseChoosen = 0
+        print("True")
     }
     
     @IBAction func ChooseFalse(_ sender: UIButton) {
-        if False.isSelected == false {
-            responseChoosen = 1
-            False.backgroundColor = UIColor.green
-            print("False")
-            DidTapButton(Validate)
-        } else {
-            False.backgroundColor = UIColor.blue
-            print("KO")
-        }
+        responseChoosen = 1
+        print("False")
     }
     
     @IBAction func Validation(_ sender: UIButton) {
         True.isEnabled = false
         False.isEnabled = false
         db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
-            for _ in querySnapshot!.documents {
-                self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
-                    let bonneReponseRef = documentSnapshot!.get("Reponse") as! DocumentReference
-                    let bonneReponseID = bonneReponseRef.documentID
-                self.db.collection("QCM").getDocuments { (querySnapshot, error) in
-                    for _ in querySnapshot!.documents {
-                        self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments {    (choixQuerySnapshot, error) in
-                            for choix in choixQuerySnapshot!.documents {
-                                self.arrayOfChoice.append(choix.documentID)
-                            }
-                        }
+            self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).getDocument { (documentSnapshot, error) in
+                let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
+                let bonneReponseID = bonneReponseRef.documentID
+            self.db.collection("TrueFalse").getDocuments { (querySnapshot, error) in
+                self.db.collection("TrueFalse").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
+                    for choix in choixQuerySnapshot!.documents {
+                        self.arrayOfChoice.append(choix.documentID)
                     }
                 }
-                    if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
-                        self.alertResponseTrue()
-                        self.True.isEnabled = true
-                        self.False.isEnabled = true
-                        DispatchQueue.main.async {
-                            self.questionIndex += 1
-                            self.Start()
-                        }
-                    } else {
-                        self.alertResponseFalse()
-                        self.True.isEnabled = true
-                        self.False.isEnabled = true
-                        DispatchQueue.main.async {
-                            self.questionIndex += 1
-                            self.Start()
-                        }
-                    }
-                    
-                }
-                
             }
-            
+                if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
+                    self.alertResponseTrue()
+                    self.False.isEnabled = true
+                    self.True.isEnabled = true
+                    DispatchQueue.main.async {
+                        self.questionIndex += 1
+                        self.Start()
+                    }
+                } else {
+                    self.alertResponseFalse()
+                    self.True.isEnabled = true
+                    self.False.isEnabled = true
+                    DispatchQueue.main.async {
+                        self.questionIndex += 1
+                        self.Start()
+                    }
+                }
+            }
         }
     }
     
@@ -142,7 +112,6 @@ class TrueFalse : UIViewController {
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.True.setTitle(choice, for: .normal)
-                                            self.ChooseTrue(self.True)
                                         }
                                     }
                                     break
@@ -151,7 +120,6 @@ class TrueFalse : UIViewController {
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.False.setTitle(choice, for: .normal)
-                                            self.ChooseFalse(self.False)
                                         }
                                     }
                                     break
@@ -161,17 +129,11 @@ class TrueFalse : UIViewController {
                             i += 1
                         }
                     }
-                    
                 }
-                    DispatchQueue.main.async {
-                        self.DidTapButton(self.True)
-                        self.DidTapButton(self.False)
-                        self.Validation(self.Validate)
-                    }
-            } else {
+            }else {
                 print("Document does not exist")
             }
-        }
+         }
     }
                 
     func alertResponseFalse() {

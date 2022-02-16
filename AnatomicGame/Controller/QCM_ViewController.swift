@@ -63,11 +63,9 @@ class QCM : UIViewController {
                 let bonneReponseRef = documentSnapshot!.get("Response") as! DocumentReference
                 let bonneReponseID = bonneReponseRef.documentID
             self.db.collection("QCM").getDocuments { (querySnapshot, error) in
-                for _ in querySnapshot!.documents {
-                    self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
-                            for choix in choixQuerySnapshot!.documents {
-                                self.arrayOfChoice.append(choix.documentID)
-                            }
+                self.db.collection("QCM").document(self.arrayOfData[self.questionIndex]).collection("Choix").getDocuments { (choixQuerySnapshot, error) in
+                    for choix in choixQuerySnapshot!.documents {
+                        self.arrayOfChoice.append(choix.documentID)
                     }
                 }
             }
@@ -160,7 +158,6 @@ class QCM : UIViewController {
                                     break
                                 default:
                                     print("Error")
-                                    break
                             }
                             i += 1
                         }
