@@ -33,12 +33,20 @@ class TrueFalse : UIViewController {
     }
     
     @IBAction func ChooseTrue(_ sender: UIButton) {
-        responseChoosen = 0
+        if(responseChoosen != 0) {
+            True.tintColor = .blue
+            False.tintColor = .red
+            responseChoosen = 0
+        }
         print("True")
     }
     
     @IBAction func ChooseFalse(_ sender: UIButton) {
-        responseChoosen = 1
+        if(responseChoosen != 1) {
+            True.tintColor = .green
+            False.tintColor = .blue
+            responseChoosen = 1
+        }
         print("False")
     }
     
@@ -57,20 +65,27 @@ class TrueFalse : UIViewController {
                 }
             }
                 if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
-                    self.alertResponseTrue()
-                    self.False.isEnabled = true
-                    self.True.isEnabled = true
                     DispatchQueue.main.async {
-                        self.questionIndex += 1
-                        self.Start()
+                        self.alertResponseTrue()
+                        self.True.isEnabled = true
+                        self.False.isEnabled = true
+                        if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.questionIndex += 1
+                            self.Start()
+                        }else {
+                            self.alertEndGame()
+                        }
                     }
                 } else {
-                    self.alertResponseFalse()
-                    self.True.isEnabled = true
-                    self.False.isEnabled = true
-                    DispatchQueue.main.async {
-                        self.questionIndex += 1
-                        self.Start()
+                    DispatchQueue.main.async {  self.alertResponseFalse()
+                        self.True.isEnabled = true
+                        self.False.isEnabled = true
+                        if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.questionIndex += 1
+                            self.Start()
+                        } else {
+                            self.alertEndGame()
+                        }
                     }
                 }
             }
@@ -102,13 +117,11 @@ class TrueFalse : UIViewController {
                         print ("\(documents.documentID) => \(documents.data())")
                         self.arrayOfChoice.append(documents.documentID)
                     }
-                    DispatchQueue.main.async {
-                        self.Question.text = document.get("Question") as? String
-                        var i = 0
-                        while i < self.arrayOfChoice.count {
-                            switch i {
+                    self.Question.text = document.get("Question") as? String
+                    for index in 0...self.arrayOfChoice.count{
+                            switch index {
                                 case 0:
-                                    self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
+                                    self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.True.setTitle(choice, for: .normal)
@@ -116,7 +129,7 @@ class TrueFalse : UIViewController {
                                     }
                                     break
                                 case 1:
-                                    self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[1]).getDocument { (choix, error) in
+                                    self.db.collection("TrueFalse").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.False.setTitle(choice, for: .normal)
@@ -126,14 +139,13 @@ class TrueFalse : UIViewController {
                                 default:
                                     print("Error")
                             }
-                            i += 1
                         }
                     }
-                }
+                
             }else {
                 print("Document does not exist")
             }
-         }
+        }
     }
                 
     func alertResponseFalse() {
@@ -148,6 +160,15 @@ class TrueFalse : UIViewController {
     func alertResponseTrue() {
         let alertVC = UIAlertController(title: "Response",
                                         message: "Bonne reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    func alertEndGame() {
+        let alertVC = UIAlertController(title: "End Game",
+                                        message: "Fin du jeu.",
                                         preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .destructive)
         alertVC.addAction(alertAction)

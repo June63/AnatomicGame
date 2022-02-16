@@ -34,22 +34,46 @@ class QCM : UIViewController {
     }
     
     @IBAction func AnswerA(_ sender: UIButton) {
-        responseChoosen = 0
+        if(responseChoosen != 0) {
+            ChoiceA.tintColor = .green
+            ChoiceB.tintColor = .blue
+            ChoiceC.tintColor = .blue
+            ChoiceD.tintColor = .blue
+            responseChoosen = 0
+        }
         print("A")
     }
     
     @IBAction func AnswerB(_ sender: UIButton) {
-        responseChoosen = 1
+        if(responseChoosen != 1) {
+            ChoiceA.tintColor = .blue
+            ChoiceB.tintColor = .green
+            ChoiceC.tintColor = .blue
+            ChoiceD.tintColor = .blue
+            responseChoosen = 1
+        }
         print("B")
     }
     
     @IBAction func AnswerC(_ sender: UIButton) {
-        responseChoosen = 2
+        if(responseChoosen != 2) {
+            ChoiceA.tintColor = .blue
+            ChoiceB.tintColor = .blue
+            ChoiceC.tintColor = .green
+            ChoiceD.tintColor = .blue
+            responseChoosen = 2
+        }
         print("C")
     }
     
     @IBAction func AnswerD(_ sender: UIButton) {
-        responseChoosen = 3
+        if(responseChoosen != 3) {
+            ChoiceA.tintColor = .blue
+            ChoiceB.tintColor = .blue
+            ChoiceC.tintColor = .blue
+            ChoiceD.tintColor = .green
+            responseChoosen = 3
+        }
         print("D")
     }
     
@@ -70,24 +94,31 @@ class QCM : UIViewController {
                 }
             }
                 if (self.arrayOfChoice[self.responseChoosen] == bonneReponseID) {
-                    self.alertResponseTrue()
-                    self.ChoiceA.isEnabled = true
-                    self.ChoiceB.isEnabled = true
-                    self.ChoiceC.isEnabled = true
-                    self.ChoiceD.isEnabled = true
                     DispatchQueue.main.async {
-                        self.questionIndex += 1
-                        self.Start()
+                        self.alertResponseTrue()
+                        self.ChoiceA.isEnabled = true
+                        self.ChoiceB.isEnabled = true
+                        self.ChoiceC.isEnabled = true
+                        self.ChoiceD.isEnabled = true
+                        if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.questionIndex += 1
+                            self.Start()
+                        }else {
+                            self.alertEndGame()
+                        }
                     }
                 } else {
-                    self.alertResponseFalse()
-                    self.ChoiceA.isEnabled = true
-                    self.ChoiceB.isEnabled = true
-                    self.ChoiceC.isEnabled = true
-                    self.ChoiceD.isEnabled = true
-                    DispatchQueue.main.async {
-                        self.questionIndex += 1
-                        self.Start()
+                    DispatchQueue.main.async {  self.alertResponseFalse()
+                        self.ChoiceA.isEnabled = true
+                        self.ChoiceB.isEnabled = true
+                        self.ChoiceC.isEnabled = true
+                        self.ChoiceD.isEnabled = true
+                        if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.questionIndex += 1
+                            self.Start()
+                        } else {
+                            self.alertEndGame()
+                        }
                     }
                 }
             }
@@ -119,13 +150,11 @@ class QCM : UIViewController {
                         print ("\(documents.documentID) => \(documents.data())")
                         self.arrayOfChoice.append(documents.documentID)
                     }
-                    DispatchQueue.main.async {
-                        self.Question.text = document.get("Question") as? String
-                        var i = 0
-                        while i < self.arrayOfChoice.count {
-                            switch i {
+                    self.Question.text = document.get("Question") as? String
+                    for index in 0...self.arrayOfChoice.count-1{
+                            switch index {
                                 case 0:
-                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[0]).getDocument { (choix, error) in
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceA.setTitle(choice, for: .normal)
@@ -133,7 +162,7 @@ class QCM : UIViewController {
                                     }
                                     break
                                 case 1:
-                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[1]).getDocument { (choix, error) in
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceB.setTitle(choice, for: .normal)
@@ -141,7 +170,7 @@ class QCM : UIViewController {
                                     }
                                     break
                                 case 2:
-                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[2]).getDocument { (choix, error) in
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceC.setTitle(choice, for: .normal)
@@ -149,7 +178,7 @@ class QCM : UIViewController {
                                     }
                                     break
                                 case 3:
-                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[3]).getDocument { (choix, error) in
+                                    self.db.collection("QCM").document(document.documentID).collection("Choix").document(self.arrayOfChoice[index]).getDocument { (choix, error) in
                                         let choice = choix!.get("Response") as! String
                                         DispatchQueue.main.async {
                                             self.ChoiceD.setTitle(choice, for: .normal)
@@ -159,14 +188,13 @@ class QCM : UIViewController {
                                 default:
                                     print("Error")
                             }
-                            i += 1
                         }
                     }
-                }
+                
             }else {
                 print("Document does not exist")
             }
-         }
+        }
     }
 
     func alertResponseFalse() {
@@ -181,6 +209,15 @@ class QCM : UIViewController {
     func alertResponseTrue() {
         let alertVC = UIAlertController(title: "Response",
                                         message: "Bonne reponse.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    func alertEndGame() {
+        let alertVC = UIAlertController(title: "End Game",
+                                        message: "Fin du jeu.",
                                         preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .destructive)
         alertVC.addAction(alertAction)
