@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq4-aC-Yjr">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq4-aC-Yjr">
                                 <rect key="frame" x="35" y="285" width="96.5" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="cki-5s-9BW"/>
@@ -45,7 +45,7 @@
                                     <action selector="AnswerA:" destination="NO2-rA-uRL" eventType="touchUpInside" id="Mfl-mz-du7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-sD-9Ex">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-sD-9Ex">
                                 <rect key="frame" x="229" y="285" width="95" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="B. ChoiceB"/>
@@ -53,7 +53,7 @@
                                     <action selector="AnswerB:" destination="NO2-rA-uRL" eventType="touchUpInside" id="bRF-aU-EK6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9B-bQ-WyP">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9B-bQ-WyP">
                                 <rect key="frame" x="35" y="392" width="96.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="C. ChoiceC"/>
@@ -61,7 +61,7 @@
                                     <action selector="AnswerC:" destination="NO2-rA-uRL" eventType="touchUpInside" id="QQ8-Bk-zfI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhm-Pq-Q1Y">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhm-Pq-Q1Y">
                                 <rect key="frame" x="137" y="537" width="101" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="VsO-XP-twM"/>
@@ -72,7 +72,7 @@
                                     <action selector="Validation:" destination="NO2-rA-uRL" eventType="touchUpInside" id="Zbe-fe-qSN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4q-rA-GMH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4q-rA-GMH">
                                 <rect key="frame" x="228" y="392" width="96.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="D. ChoiceD"/>
@@ -186,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-Ic-2K8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-Ic-2K8">
                                 <rect key="frame" x="228" y="366" width="75" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="H0I-Wj-XS4"/>
@@ -194,14 +194,12 @@
                                     <constraint firstAttribute="width" secondItem="vvj-Ic-2K8" secondAttribute="height" multiplier="58:31" id="aIC-Zd-RUp"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="False">
-                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="filled" title="False"/>
                                 <connections>
                                     <action selector="ChooseFalse:" destination="w5S-gB-Uod" eventType="touchUpInside" id="zVa-YT-XQO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V1-z3-az3">
                                 <rect key="frame" x="142" y="516" width="90" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SyB-OG-flp"/>
@@ -213,7 +211,7 @@
                                     <action selector="Validation:" destination="w5S-gB-Uod" eventType="touchDown" id="iw4-hc-zsp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM1-MT-VTh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM1-MT-VTh">
                                 <rect key="frame" x="53" y="366" width="70" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nM1-MT-VTh" secondAttribute="height" multiplier="80:61" constant="17.540983606557383" id="HXG-Um-UsJ"/>
@@ -221,9 +219,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="see-Ia-lgE"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="True">
-                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="filled" title="True"/>
                                 <connections>
                                     <action selector="ChooseTrue:" destination="w5S-gB-Uod" eventType="touchUpInside" id="GLu-6x-NaI"/>
                                 </connections>
@@ -331,17 +327,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

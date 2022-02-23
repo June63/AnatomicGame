@@ -96,31 +96,30 @@ class QCM : UIViewController {
             }
                 if (self.arrayOfChoice[self.responseChoosen] == goodResponseID) {
                     DispatchQueue.main.async {
-                        self.alertResponseTrue()
                         self.ChoiceA.isEnabled = true
                         self.ChoiceB.isEnabled = true
                         self.ChoiceC.isEnabled = true
                         self.ChoiceD.isEnabled = true
                         if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.alertResponseTrue()
                             self.questionIndex += 1
                             self.Start()
                         }else {
-                            print("End")
-                            self.alertEndGame()
+                            self.alertTrueEndGame()
                         }
                     }
                 } else {
-                    DispatchQueue.main.async {  self.alertResponseFalse()
+                    DispatchQueue.main.async {
                         self.ChoiceA.isEnabled = true
                         self.ChoiceB.isEnabled = true
                         self.ChoiceC.isEnabled = true
                         self.ChoiceD.isEnabled = true
                         if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.alertResponseFalse()
                             self.questionIndex += 1
                             self.Start()
                         } else {
-                            print("End")
-                            self.alertEndGame()
+                            self.alertFalseEndGame()
                         }
                     }
                 }
@@ -220,9 +219,18 @@ class QCM : UIViewController {
         self.present(alertVC, animated: true)
     }
     
-    func alertEndGame() {
+    func alertTrueEndGame() {
         let alertVC = UIAlertController(title: "End Game",
-                                        message: "Fin du jeu.",
+                                        message: "Bonne reposne, Fin du jeu.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    func alertFalseEndGame() {
+        let alertVC = UIAlertController(title: "End Game",
+                                        message: "Mauvaise reponse, Fin du jeu.",
                                         preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .destructive)
         alertVC.addAction(alertAction)

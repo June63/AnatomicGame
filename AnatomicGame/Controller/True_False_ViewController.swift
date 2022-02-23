@@ -34,8 +34,8 @@ class TrueFalse : UIViewController {
     
     @IBAction func ChooseTrue(_ sender: UIButton) {
         if(responseChoosen != 0) {
-            True.tintColor = .blue
-            False.tintColor = .red
+            True.tintColor = .green
+            False.tintColor = .blue
             responseChoosen = 0
         }
         print("True")
@@ -43,8 +43,8 @@ class TrueFalse : UIViewController {
     
     @IBAction func ChooseFalse(_ sender: UIButton) {
         if(responseChoosen != 1) {
-            True.tintColor = .green
-            False.tintColor = .blue
+            True.tintColor = .blue
+            False.tintColor = .red
             responseChoosen = 1
         }
         print("False")
@@ -67,15 +67,15 @@ class TrueFalse : UIViewController {
             }
                 if (self.arrayOfChoice[self.responseChoosen] == goodResponseID) {
                     DispatchQueue.main.async {
-                        self.alertResponseTrue()
+                        
                         self.True.isEnabled = true
                         self.False.isEnabled = true
-                        if(self.questionIndex + 1  < self.arrayOfData.count) {
+                        if(self.questionIndex + 1 < self.arrayOfData.count) {
+                            self.alertResponseTrue()
                             self.questionIndex += 1
                             self.Start()
                         }else {
-                            print("End")
-                            self.alertEndGame()
+                            self.alertTrueEndGame()
                         }
                     }
                 } else {
@@ -83,11 +83,11 @@ class TrueFalse : UIViewController {
                         self.True.isEnabled = true
                         self.False.isEnabled = true
                         if(self.questionIndex + 1  < self.arrayOfData.count) {
+                            self.alertResponseFalse()
                             self.questionIndex += 1
                             self.Start()
                         } else {
-                            print("End")
-                            self.alertEndGame()
+                            self.alertFalseEndGame()
                         }
                     }
                 }
@@ -171,9 +171,18 @@ class TrueFalse : UIViewController {
         self.present(alertVC, animated: true)
     }
     
-    func alertEndGame() {
+    func alertTrueEndGame() {
         let alertVC = UIAlertController(title: "End Game",
-                                        message: "Fin du jeu.",
+                                        message: "Bonne reposne, Fin du jeu.",
+                                        preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .destructive)
+        alertVC.addAction(alertAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    func alertFalseEndGame() {
+        let alertVC = UIAlertController(title: "End Game",
+                                        message: "Mauvaise reponse, Fin du jeu.",
                                         preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .destructive)
         alertVC.addAction(alertAction)
