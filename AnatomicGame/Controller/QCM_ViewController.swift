@@ -96,12 +96,12 @@ class QCM : UIViewController {
             }
                 if (self.arrayOfChoice[self.responseChoosen] == goodResponseID) {
                     DispatchQueue.main.async {
-                        self.ChoiceA.isEnabled = true
-                        self.ChoiceB.isEnabled = true
-                        self.ChoiceC.isEnabled = true
-                        self.ChoiceD.isEnabled = true
                         if(self.questionIndex + 1  < self.arrayOfData.count) {
                             self.alertResponseTrue()
+                            self.ChoiceA.isEnabled = true
+                            self.ChoiceB.isEnabled = true
+                            self.ChoiceC.isEnabled = true
+                            self.ChoiceD.isEnabled = true
                             self.questionIndex += 1
                             self.Start()
                         }else {
@@ -110,12 +110,12 @@ class QCM : UIViewController {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.ChoiceA.isEnabled = true
-                        self.ChoiceB.isEnabled = true
-                        self.ChoiceC.isEnabled = true
-                        self.ChoiceD.isEnabled = true
                         if(self.questionIndex + 1  < self.arrayOfData.count) {
                             self.alertResponseFalse()
+                            self.ChoiceA.isEnabled = true
+                            self.ChoiceB.isEnabled = true
+                            self.ChoiceC.isEnabled = true
+                            self.ChoiceD.isEnabled = true
                             self.questionIndex += 1
                             self.Start()
                         } else {

@@ -67,11 +67,10 @@ class TrueFalse : UIViewController {
             }
                 if (self.arrayOfChoice[self.responseChoosen] == goodResponseID) {
                     DispatchQueue.main.async {
-                        
-                        self.True.isEnabled = true
-                        self.False.isEnabled = true
-                        if(self.questionIndex + 1 < self.arrayOfData.count) {
+                        if(self.questionIndex + 1  < self.arrayOfData.count) {
                             self.alertResponseTrue()
+                            self.True.isEnabled = true
+                            self.False.isEnabled = true
                             self.questionIndex += 1
                             self.Start()
                         }else {
@@ -79,11 +78,11 @@ class TrueFalse : UIViewController {
                         }
                     }
                 } else {
-                    DispatchQueue.main.async {  self.alertResponseFalse()
-                        self.True.isEnabled = true
-                        self.False.isEnabled = true
+                    DispatchQueue.main.async {
                         if(self.questionIndex + 1  < self.arrayOfData.count) {
                             self.alertResponseFalse()
+                            self.True.isEnabled = true
+                            self.False.isEnabled = true
                             self.questionIndex += 1
                             self.Start()
                         } else {
@@ -188,6 +187,5 @@ class TrueFalse : UIViewController {
         alertVC.addAction(alertAction)
         self.present(alertVC, animated: true)
     }
-
 }
 
